@@ -1,4 +1,4 @@
-erver:
+server:
   port: 8088
 
 spring:
@@ -13,6 +13,12 @@ spring:
       max-active: 20
       min-idle: 1
       max-wait: 600000
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
 
 mybatis:
   config-location: classpath:mapper/*.xml
