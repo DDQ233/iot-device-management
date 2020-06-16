@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="" />
+    <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="项目初始化">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/login.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/login_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/login_zh_CN.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/main.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/main_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/main_zh_CN.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/register.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/register_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/i18n/register_zh_CN.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592267847102</updated>
-      <workItem from="1592267851091" duration="4474000" />
+      <workItem from="1592267851091" duration="5705000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>

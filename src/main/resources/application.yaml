@@ -1,5 +1,7 @@
 server:
   port: 8088
+  servlet:
+    context-path: /IOT-Device
 
 spring:
   datasource:
@@ -19,6 +21,8 @@ spring:
     mode: HTML5
     prefix: classpath:/templates/
     suffix: .html
+  messages:
+    basename: i18n
 
 mybatis:
   config-location: classpath:mapper/*.xml
