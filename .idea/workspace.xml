@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static.js/echarts-v4.7.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592267847102</updated>
-      <workItem from="1592267851091" duration="7595000" />
+      <workItem from="1592267851091" duration="8151000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>
@@ -132,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592278865466</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加基本的静态资源">
+      <created>1592279321726</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592279321726</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +214,7 @@
     <MESSAGE value="添加国际化资源配置但未添加信息；修复一个项目配置文件的bug" />
     <MESSAGE value="修复因为用户名和密码的问题而不能连接数据库的bug" />
     <MESSAGE value="添加基本的包和Java类" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加基本的包和Java类" />
+    <MESSAGE value="添加基本的静态资源" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加基本的静态资源" />
   </component>
 </project>
