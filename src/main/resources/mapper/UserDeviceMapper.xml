@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sise.app.dao.UserDeviceDao">
+
+    <resultMap id="deviceList" type="device">
+        <!--<result property="device_id" column="device_id"/>-->
+        <result property="device_name" column="device_name"/>
+        <result property="device_protocol_id" column="device_protocol_id"/>
+    </resultMap>
+
+    <resultMap id="userDeviceList" type="UserDevice">
+        <result property="user_id" column="user_id"/>
+        <result property="device_id" column="device_id"/>
+        <result property="device_status" column="device_status"/>
+        <result property="device_auth" column="device_auth"/>
+        <result property="device_addr" column="device_addr"/>
+        <result property="device_api" column="device_api"/>
+        <result property="device_desc" column="device_desc"/>
+        <result property="device_name" column="device_name"/>
+        <association property="device" javaType="Device" resultMap="device"/>
+    </resultMap>
+
+    <resultMap id="userDeviceList" type="UserDeviceList">
+        <association property="user" javaType="User" resultMap="userList"/>
+        <collection property="userDevice" javaType="UserDevice" resultMap="UserDevice"/>
+    </resultMap>
+
+    <!--用户添加设备-->
+    <insert id="addUserDevice" parameterType="UserDevice">
+        insert into tb_device
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            user_id,
+            device_id,
+            device_status,
+            <if test="device_auth != null add device_auth != ''">
+                device_auth,
+            </if>
+            <if test="device_addr != null add device_addr != ''">
+                device_addr,
+            </if>
+            <if test="device_api != null add device_api != ''">
+                device_api,
+            </if>
+            <if test="device_desc != null add device_desc != ''">
+                device_desc,
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{user_id},
+            #{device_id},
+            #{device_status},
+            <if test="device_auth != null add device_auth != ''">
+                #{device_auth},
+            </if>
+            <if test="device_addr != null add device_addr != ''">
+                #{device_addr},
+            </if>
+            <if test="device_api != null add device_api != ''">
+                #{device_api},
+            </if>
+            <if test="device_desc != null add device_desc != ''">
+                #{device_desc},
+            </if>
+        </trim>
+    </insert>
+
+    <!--用户删除设备-->
+    <delete id="deleteDeviceById" parameterType="String">
+        delete from tb_device where user_id = #{userId} and device_id = #{deviceId}
+    </delete>
+
+
+</mapper>

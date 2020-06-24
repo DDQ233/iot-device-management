@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sise.app.dao.DeviceDao">
+
+    <resultMap id="protocolList" type="protocol">
+        <!--<result property="device_protocol_id" column="device_protocol_id"/>-->
+        <result property="device_protocol_name" column="device_protocol_name"/>
+        <result property="device_protocol_desc" column="device_protocol_desc"/>
+    </resultMap>
+
+    <resultMap id="priClassifyList" type="PriClassify">
+        <!--<result property="pri_classify_id" column="pri_classify_id"/>-->
+        <result property="pri_classify_name" column="pri_classify_name"/>
+        <result property="pri_classify_desc" column="pri_classify_desc"/>
+    </resultMap>
+
+    <!--<resultMap id="secClassifyList" type="SecClassify">-->
+    <!--    <result property="role_id" column="role_id"/>-->
+    <!--    <result property="role_name" column="role_name"/>-->
+    <!--    <result property="role_desc" column="role_desc"/>-->
+    <!--</resultMap>-->
+
+    <resultMap id="deviceList" type="device">
+        <result property="device_id" column="device_id"/>
+        <result property="device_name" column="device_name"/>
+        <result property="device_protocol_id" column="device_protocol_id"/>
+        <result property="device_pri_classify_id" column="device_pri_classify_id"/>
+        <result property="device_sec_classify_id" column="device_sec_classify_id"/>
+        <result property="device_create_time" column="device_create_time"/>
+        <result property="device_desc" column="device_desc"/>
+        <result property="device_usage" column="device_usage"/>
+        <association property="protocol" javaType="Protocol" resultMap="protocolList"/>
+        <association property="priClassify" javaType="PriClassify" resultMap="priClassifyList"/>
+        <!--<association property="secClassify" javaType="SecClassify" resultMap="secClassifyList"/>-->
+    </resultMap>
+
+    <!-- 添加设备信息 -->
+    <insert id="addDevice" parameterType="device">
+        insert into tb_device
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            device_id,
+            <if test="device_name != null add device_name != ''">
+                device_name,
+            </if>
+            <if test="device_protocol_id != null add device_protocol_id != ''">
+                device_protocol_id,
+            </if>
+            <if test="device_pri_classify_id != null add device_pri_classify_id != ''">
+                device_pri_classify_id,
+            </if>
+            <if test="device_create_time != null add device_create_time != ''">
+                device_create_time,
+            </if>
+            <if test="device_desc != null add device_desc != ''">
+                device_desc,
+            </if>
+            <if test="device_usage != null add device_usage != ''">
+                device_usage,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{device_id},
+            <if test="device_name != null add device_name != ''">
+                #{device_name},
+            </if>
+            <if test="device_protocol_id != null add device_protocol_id != ''">
+                #{device_protocol_id},
+            </if>
+            <if test="device_pri_classify_id != null add device_pri_classify_id != ''">
+                #{device_pri_classify_id},
+            </if>
+            <if test="device_create_time != null add device_create_time != ''">
+                #{device_create_time},
+            </if>
+            <if test="device_desc != null add device_desc != ''">
+                #{device_desc},
+            </if>
+            <if test="device_usage != null add device_usage != ''">
+                #{device_usage},
+            </if>
+        </trim>
+    </insert>
+
+    <!--根据 ID 删除设备信息-->
+    <delete id="deleteDeviceById" parameterType="String">
+        delete from tb_device where device_id = #{id}
+    </delete>
+
+    <!--更新设备信息-->
+    <update id="updateDevice" parameterType="device">
+        update tb_device
+        <set>
+            <if test="device_name != null and device_name != ''">
+                device_name = #{device_name},
+            </if>
+            <if test="device_protocol_id != null and device_protocol_id != ''">
+                device_protocol_id = #{device_protocol_id},
+            </if>
+            <if test="device_pri_classify_id != null and device_pri_classify_id != ''">
+                device_pri_classify_id = #{device_pri_classify_id},
+            </if>
+            <if test="device_create_time != null and device_create_time != ''">
+                device_create_time = #{device_create_time},
+            </if>
+            <if test="device_desc != null and device_desc != ''">
+                device_desc = #{device_desc},
+            </if>
+            <if test="device_usage != null and device_usage != ''">
+                device_usage = #{device_usage}
+            </if>
+        </set>
+        where device_id = #{device_id}
+    </update>
+
+    <!--查询所有设备信息-->
+    <select id="findAllDevice" resultMap="deviceList">
+        select dev.*, pro.*, pri.*
+        from tb_device as dev, tb_protocol as pro, tb_pri_classify as pri
+        where dev.device_protocol_id = pro.device_protocol_id
+        and dev.device_pri_classfy_id = pri.pri_classify_id
+    </select>
+
+    <!--查询设备信息-->
+    <select id="finDevice" parameterType="device" resultMap="deviceList">
+        select dev.*, pro.*, pri.*
+        from tb_device as dev, tb_protocol as pro, tb_pri_classify as pri
+        <trim prefix="where" prefixOverrides="and">
+            and dev.device_protocol_id = pro.device_protocol_id
+            and dev.device_pri_classfy_id = pri.pri_classify_id
+            <if test="device_id !=null and device_id != ''">
+                and device_id like concat('%', #{device_id}, '%')
+            </if>
+            <if test="device_name != null and device_name != ''">
+                and device_name like concat('%', #{device_name}, '%')
+            </if>
+            <if test="device_protocol_id !=null and device_protocol_id != ''">
+                and device_protocol_id like concat('%', #{device_protocol_id}, '%')
+            </if>
+            <if test="device_pri_classify_id != null and device_pri_classify_id != ''">
+                and device_pri_classify_id like concat('%', #{device_pri_classify_id}, '%')
+            </if>
+            <if test="device_create_time !=null and device_create_time != ''">
+                and device_create_time like concat('%', #{device_create_time}, '%')
+            </if>
+            <if test="device_desc != null and device_desc != ''">
+                and device_desc like concat('%', #{device_desc}, '%')
+            </if>
+            <if test="device_usage !=null and device_usage != ''">
+                and device_usage like concat('%', #{device_usage}, '%')
+            </if>
+        </trim>
+    </select>
+
+    <!--根据 ID 查询设备信息-->
+    <select id="findDeviceById" parameterType="String" resultType="device">
+        select* from tb_device where admin_id = #{id} limit 1
+    </select>
+
+</mapper>

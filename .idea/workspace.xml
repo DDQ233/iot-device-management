@@ -2,13 +2,79 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/DataDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/DeviceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/PriClassifyDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/ProtocolDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/RoleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDeviceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Device.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/PriClassify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Protocol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/UserDevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/UserDeviceList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-main.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-redis.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/contorller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/web/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/contorller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/web/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/AdminDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/SuperAdminDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/impl/AdminDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/impl/SuperAdminDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/impl/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/SuperAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/SecClassify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/utils/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="iot-device: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,6 +104,7 @@
   <component name="ProjectId" id="1dNa8hu0q840ap8FjwmrKyOJ6J1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -92,7 +159,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592267847102</updated>
-      <workItem from="1592267851091" duration="8151000" />
+      <workItem from="1592267851091" duration="8442000" />
+      <workItem from="1592310037835" duration="21000" />
+      <workItem from="1592895143391" duration="23550000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>
@@ -136,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592279321726</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="在.gitignore添加忽略workspace.xml文件">
+      <created>1592279845656</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1592279845656</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +273,9 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -215,6 +293,7 @@
     <MESSAGE value="修复因为用户名和密码的问题而不能连接数据库的bug" />
     <MESSAGE value="添加基本的包和Java类" />
     <MESSAGE value="添加基本的静态资源" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加基本的静态资源" />
+    <MESSAGE value="在.gitignore添加忽略workspace.xml文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="在.gitignore添加忽略workspace.xml文件" />
   </component>
 </project>

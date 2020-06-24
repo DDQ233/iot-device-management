@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sise.app.dao.UserDao">
+    <!--添加用户-->
+    <insert id="addUser" parameterType="user">
+        insert into tb_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            user_id,
+            user_pwd,
+            <if test="user_name != null add user_name != ''">
+                user_name,
+            </if>
+            <if test="user_phone != null add user_phone != ''">
+                user_phone,
+            </if>
+            <if test="user_email != null add user_email != ''">
+                user_email,
+            </if>
+            <if test="user_location != null add user_location != ''">
+                user_location,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{user_id},
+            #{user_pwd},
+            <if test="user_name != null add user_name != ''">
+                #{user_name},
+            </if>
+            <if test="user_phone != null add user_phone != ''">
+                #{admin_phone},
+            </if>
+            <if test="user_email != null add user_email != ''">
+                #{user_email},
+            </if>
+            <if test="user_location != null add user_location != ''">
+                #{user_location},
+            </if>
+        </trim>
+    </insert>
+
+    <!--删除用户-->
+    <delete id="deleteAdminById" parameterType="String">
+        delete from tb_user where user_id = #{id}
+    </delete>
+
+    <!--更新用户信息-->
+    <update id="updateUserById" parameterType="user">
+        update tb_user
+        <set>
+            <if test="user_pwd != null and user_pwd != ''">
+                user_pwd = #{user_pwd},
+            </if>
+            <if test="user_name != null and user_name != ''">
+                user_name = #{user_name},
+            </if>
+            <if test="user_phone != null and user_phone != ''">
+                user_phone = #{user_phone},
+            </if>
+            <if test="user_email != null and user_email != ''">
+                user_email = #{user_email},
+            </if>
+            <if test="user_location != null and user_location != ''">
+                user_location = #{user_location},
+            </if>
+        </set>
+        where user_id = #{user_id}
+    </update>
+
+    <!--查询所有用户-->
+    <select id="findAllUser" resultMap="user">
+        select* from tb_user;
+    </select>
+
+    <!--查询用户-->
+    <select id="findUser" parameterType="user" resultMap="user">
+        select* from tb_user
+        <where>
+            <if test="user_id !=null and user_id != ''">
+                and user_id like concat('%', #{user_id}, '%')
+            </if>
+            <if test="user_name != null and user_name != ''">
+                and user_name like concat('%', #{user_name}, '%')
+            </if>
+            <if test="user_phone !=null and user_phone != ''">
+                and user_phone like concat('%', #{user_phone}, '%')
+            </if>
+            <if test="user_email != null and user_email != ''">
+                and user_email like concat('%', #{user_email}, '%')
+            </if>
+            <if test="user_location != null and user_location != ''">
+                and user_location like concat('%', #{user_location}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据 ID 查询用户-->
+    <select id="findUserById" parameterType="String" resultType="user">
+        select* from tb_user where user_id = #{id} limit 1
+    </select>
+
+    <!--根据用户名和密码查询用户信息-->
+    <select id="findUserByIdAndPwd" parameterType="String" resultType="user">
+        select* from tb_user where user_id = #{id} and user_pwd = #{pwd}
+    </select>
+
+</mapper>

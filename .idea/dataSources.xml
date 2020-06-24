@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="iot-device@111.229.163.109" uuid="4292ab91-1374-4bda-baf7-1d61f2ceb02f">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://111.229.163.109:3306/iot-device</jdbc-url>
+    </data-source>
+  </component>
+</project>

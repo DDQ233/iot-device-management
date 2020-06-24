@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sise.app.dao.AdminDao">
+
+    <resultMap id="roleList" type="role">
+        <!--<result property="role_id" column="role_id"/>-->
+        <result property="role_name" column="role_name"/>
+        <result property="role_desc" column="role_desc"/>
+    </resultMap>
+
+    <resultMap id="adminList" type="admin">
+        <result property="admin_id" column="admin_id"/>
+        <result property="admin_pwd" column="admin_pwd"/>
+        <result property="admin_name" column="admin_name"/>
+        <result property="admin_phone" column="admin_phone"/>
+        <result property="admin_email" column="admin_email"/>
+        <result property="admin_location" column="admin_location"/>
+        <result property="admin_role_id" column="admin_role_id"/>
+        <association property="role" javaType="Role" resultMap="roleList"/>
+    </resultMap>
+
+    <!-- 添加管理员信息 -->
+    <insert id="addAdmin" parameterType="admin">
+        insert into tb_admin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            admin_id,
+            admin_pwd,
+            admin_role_id,
+            <if test="admin_name != null add admin_name != ''">
+                admin_name,
+            </if>
+            <if test="admin_phone != null add admin_phone != ''">
+                admin_phone,
+            </if>
+            <if test="admin_email != null add admin_email != ''">
+                admin_name,
+            </if>
+            <if test="admin_location != null add admin_location != ''">
+                admin_name,
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            #{admin_id},
+            #{admin_pwd},
+            #{admin_role_id},
+            <if test="admin_name != null add admin_name != ''">
+                #{admin_name},
+            </if>
+            <if test="admin_phone != null add admin_phone != ''">
+                #{admin_phone},
+            </if>
+            <if test="admin_email != null add admin_email != ''">
+                #{admin_email},
+            </if>
+            <if test="admin_location != null add admin_location != ''">
+                #{admin_location},
+            </if>
+        </trim>
+    </insert>
+
+    <!--根据 ID 删除管理员信息-->
+    <delete id="deleteAdminById" parameterType="String">
+        delete from tb_admin where admin_id = #{id}
+    </delete>
+
+    <!--更新管理员信息-->
+    <update id="updateAdmin" parameterType="admin">
+        update tb_admin
+        <set>
+            <if test="admin_pwd != null and admin_pwd != ''">
+                admin_pwd = #{admin_pwd},
+            </if>
+            <if test="admin_role_id != null and admin_role_id != ''">
+                admin_role_id = #{admin_role_id},
+            </if>
+            <if test="admin_name != null and admin_name != ''">
+                admin_name = #{admin_name},
+            </if>
+            <if test="admin_phone != null and admin_phone != ''">
+                admin_phone = #{admin_phone},
+            </if>
+            <if test="admin_email != null and admin_email != ''">
+                admin_email = #{admin_email},
+            </if>
+            <if test="admin_location != null and admin_location != ''">
+                admin_location = #{admin_location}
+            </if>
+        </set>
+        where admin_id = #{admin_id}
+    </update>
+
+    <!--查询所有管理员信息-->
+    <select id="findAllAdmin" resultMap="adminList">
+        select a.*, r.*
+        from tb_admin as a, tb_role as r
+        where a.admin_role_id = r.role_id
+    </select>
+
+    <!--查询管理员信息-->
+    <select id="findAdmin" parameterType="admin" resultMap="adminList">
+        select a.*, r.*
+        from tb_admin as a, tb_role as r
+        <trim prefix="where" prefixOverrides="and">
+            and a.admin_role_id = r.role_id
+            <if test="admin_id !=null and admin_id != ''">
+                and admin_id like concat('%', #{admin_id}, '%')
+            </if>
+            <if test="admin_name != null and admin_name != ''">
+                and admin_name like concat('%', #{admin_name}, '%')
+            </if>
+        </trim>
+    </select>
+
+    <!--根据 ID 查询管理员信息-->
+    <select id="findAdminById" parameterType="String" resultType="admin">
+        select* from tb_admin where admin_id = #{id} limit 1
+    </select>
+
+    <!--根据用户名和密码查询管理员信息-->
+    <select id="findAdminByIdAndPwd" parameterType="String" resultType="admin">
+        select* from tb_admin where admin_id = #{id} and admin_pwd = #{pwd} limit 1
+    </select>
+</mapper>

@@ -3,7 +3,7 @@ package com.sise.app.entity;
 /**
  * @Description TO-DO
  * @Author DDQ
- * @Date 2020/6/16 11:31
+ * @Date 2020/6/23 21:20
  */
-public class SuperAdmin {
+public class SecClassify {
 }
