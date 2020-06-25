@@ -9,7 +9,6 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:23
  */
-@Service
 public interface DeviceService {
 
     // 添加设备信息

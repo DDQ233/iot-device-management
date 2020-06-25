@@ -4,6 +4,7 @@ package app.service.before.impl;
 import app.dao.before.DataDao;
 import app.entity.Data;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -13,38 +14,41 @@ import java.util.List;
  * @Date 2020/6/25 21:07
  */
 public class DataServiceImpl implements DataDao {
+    @Resource
+    private DataDao dataDao;
+
     @Override
     public int addData(Data data) {
-        return 0;
+        return dataDao.addData(data);
     }
 
     @Override
     public int deleteDataByDeviceId(String id) {
-        return 0;
+        return dataDao.deleteDataByDeviceId(id);
     }
 
     @Override
     public int updateData(Data data) {
-        return 0;
+        return dataDao.updateData(data);
     }
 
     @Override
     public List<Data> findAllData() {
-        return null;
+        return dataDao.findAllData();
     }
 
     @Override
     public Data findData(Data data) {
-        return null;
+        return dataDao.findData(data);
     }
 
     @Override
     public Data findDataByDeviceId(String id) {
-        return null;
+        return dataDao.findDataByDeviceId(id);
     }
 
     @Override
     public List<Data> findDataByTime(Date fromDate, Date toDate) {
-        return null;
+        return dataDao.findDataByTime(fromDate, toDate);
     }
 }

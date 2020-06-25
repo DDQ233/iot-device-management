@@ -2,7 +2,9 @@ package app.service.admin.impl;
 
 import app.dao.admin.ProtocolDao;
 import app.entity.Protocol;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -10,34 +12,38 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:25
  */
+@Service
 public class ProtocolServiceImpl implements ProtocolDao {
+    @Resource
+    private ProtocolDao protocolDao;
+
     @Override
     public int addProtocol(Protocol protocol) {
-        return 0;
+        return protocolDao.addProtocol(protocol);
     }
 
     @Override
     public int deleteProtocolById(String id) {
-        return 0;
+        return protocolDao.deleteProtocolById(id);
     }
 
     @Override
     public int updateProtocol(Protocol protocol) {
-        return 0;
+        return protocolDao.updateProtocol(protocol);
     }
 
     @Override
     public List<Protocol> findAllProtocol() {
-        return null;
+        return protocolDao.findAllProtocol();
     }
 
     @Override
     public List<Protocol> findProtocol(Protocol protocol) {
-        return null;
+        return protocolDao.findProtocol(protocol);
     }
 
     @Override
     public Protocol findProtocolById(String id) {
-        return null;
+        return protocolDao.findProtocolById(id);
     }
 }

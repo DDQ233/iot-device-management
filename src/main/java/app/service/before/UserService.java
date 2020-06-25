@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
  * @Author DDQ
  * @Date 2020/6/16 11:34
  */
-@Service
 public interface UserService {
     // 用户注册
     int register(User user);

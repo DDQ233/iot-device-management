@@ -1,18 +1,15 @@
-package app.dao.admin;
+package app.service.admin;
+
 import app.entity.PriClassify;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * @Description TO-DO
  * @Author DDQ
- * @Date 2020/6/23 22:35
+ * @Date 2020/6/25 21:35
  */
-@Mapper
-@Component
-public interface PriClassifyDao {
+public interface PriClassifyService {
     // 添加一级分类
     int addPriClassify(PriClassify priClassify);
 
