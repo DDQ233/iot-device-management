@@ -2,43 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/DataDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/DeviceDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/PriClassifyDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/ProtocolDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/RoleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDeviceDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Data.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Device.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/PriClassify.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Protocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/UserDevice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/UserDeviceList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-main.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-redis.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/contorller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/web/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/contorller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/web/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/AdminDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/SuperAdminDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/impl/AdminDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/impl/SuperAdminDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/impl/UserDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/SuperAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/SecClassify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/util/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sise/app/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/IotDeviceManagementApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/config/RedisConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/config/SecuriyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/AdminDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/DataDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/DeviceDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/PriClassifyDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/ProtocolDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/RoleDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/dao/UserDeviceDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Data.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Device.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/PriClassify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Protocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/SecClassify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/UserDevice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/entity/UserDeviceList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/service/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/service/SuperAdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/service/impl/AdminServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/service/impl/SuperAdminServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/utils/Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/web/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sise/app/web/controller/RegisterController.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +96,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1dNa8hu0q840ap8FjwmrKyOJ6J1" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -112,17 +108,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main" />
       <recent name="$PROJECT_DIR$/src/main/resources/static.js" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
@@ -161,7 +162,11 @@
       <updated>1592267847102</updated>
       <workItem from="1592267851091" duration="8442000" />
       <workItem from="1592310037835" duration="21000" />
-      <workItem from="1592895143391" duration="23550000" />
+      <workItem from="1592895143391" duration="32453000" />
+      <workItem from="1593089210057" duration="358000" />
+      <workItem from="1593089697790" duration="112000" />
+      <workItem from="1593089855131" duration="1024000" />
+      <workItem from="1593090977147" duration="626000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>
