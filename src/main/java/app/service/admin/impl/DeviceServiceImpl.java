@@ -38,8 +38,8 @@ public class DeviceServiceImpl implements DeviceDao {
     }
 
     @Override
-    public List<Device> finDevice(Device device) {
-        return deviceDao.finDevice(device);
+    public List<Device> findDevice(Device device) {
+        return deviceDao.findDevice(device);
     }
 
     @Override

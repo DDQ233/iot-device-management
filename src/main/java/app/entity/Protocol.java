@@ -32,4 +32,13 @@ public class Protocol {
     public void setDevice_protocol_desc(String device_protocol_desc) {
         this.device_protocol_desc = device_protocol_desc;
     }
+
+    @Override
+    public String toString() {
+        return "Protocol{" +
+                "device_protocol_id='" + device_protocol_id + '\'' +
+                ", device_protocol_name='" + device_protocol_name + '\'' +
+                ", device_protocol_desc='" + device_protocol_desc + '\'' +
+                '}';
+    }
 }

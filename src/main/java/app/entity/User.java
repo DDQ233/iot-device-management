@@ -59,4 +59,18 @@ public class User {
     public void setUser_location(String user_location) {
         this.user_location = user_location;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id='" + user_id + '\'' +
+                ", user_pwd='" + user_pwd + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", user_phone='" + user_phone + '\'' +
+                ", user_email='" + user_email + '\'' +
+                ", user_location='" + user_location + '\'' +
+                '}';
+    }
 }
+
+

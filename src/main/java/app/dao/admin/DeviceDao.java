@@ -26,7 +26,7 @@ public interface DeviceDao {
     List<Device> findAllDevice();
 
     // 查询设备信息
-    List<Device> finDevice(Device device);
+    List<Device> findDevice(Device device);
 
     // 根据 ID 查询设备信息
     Device findDeviceById(String id);

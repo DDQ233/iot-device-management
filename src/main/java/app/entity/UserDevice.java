@@ -77,4 +77,18 @@ public class UserDevice {
     public void setDevice_desc(String device_desc) {
         this.device_desc = device_desc;
     }
+
+    @Override
+    public String toString() {
+        return "UserDevice{" +
+                "user_id='" + user_id + '\'' +
+                ", device_id='" + device_id + '\'' +
+                ", device_status='" + device_status + '\'' +
+                ", device_auth='" + device_auth + '\'' +
+                ", device_addr='" + device_addr + '\'' +
+                ", device_api='" + device_api + '\'' +
+                ", device_desc='" + device_desc + '\'' +
+                ", device=" + device.toString() +
+                '}';
+    }
 }

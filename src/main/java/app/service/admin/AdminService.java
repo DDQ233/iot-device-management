@@ -17,6 +17,12 @@ public interface AdminService {
     // 管理员登录
     int checkLogin(String id, String pwd);
 
+    // 更新管理员信息
+    int updateAdmin(Admin admin);
+
+    // 修改管理员密码
+    int updatePassword(String id, String password);
+
     // 查询所有管理员信息
     List<Admin> findAllAdmin();
 

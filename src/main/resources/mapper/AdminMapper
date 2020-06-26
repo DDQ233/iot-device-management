@@ -90,6 +90,13 @@
         where admin_id = #{admin_id}
     </update>
 
+    <!--更新管理员密码-->
+    <update id="updatePassword" parameterType="String">
+        update tb_admin
+        set admin_pwd = #{password}
+        where admin_id = #{id};
+    </update>
+
     <!--查询所有管理员信息-->
     <select id="findAllAdmin" resultMap="adminList">
         select a.*, r.*

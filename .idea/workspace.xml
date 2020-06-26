@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/PriClassifyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/PriClassifyServiceImpl.java" afterDir="false" />
+    <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="在.gitignore添加忽略workspace.xml文件">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/PageJumpController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/DeviceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/PriClassifyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/ProtocolController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/DataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/AdminDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/AdminDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/PriClassifyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/PriClassifyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/DeviceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/PriClassify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/PriClassify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Protocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/AdminService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/DeviceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/ProtocolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/ProtocolService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/AdminServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/DeviceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/ProtocolServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/ProtocolServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/DataService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/DataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/DataServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AdminMapper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +169,7 @@
       <workItem from="1593089210057" duration="358000" />
       <workItem from="1593089697790" duration="112000" />
       <workItem from="1593089855131" duration="1024000" />
-      <workItem from="1593090977147" duration="2930000" />
+      <workItem from="1593090977147" duration="26953000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>

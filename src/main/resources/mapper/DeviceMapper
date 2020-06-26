@@ -122,7 +122,7 @@
     </select>
 
     <!--查询设备信息-->
-    <select id="finDevice" parameterType="device" resultMap="deviceList">
+    <select id="findDevice" parameterType="device" resultMap="deviceList">
         select dev.*, pro.*, pri.*
         from tb_device as dev, tb_protocol as pro, tb_pri_classify as pri
         <trim prefix="where" prefixOverrides="and">

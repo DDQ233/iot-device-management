@@ -1,4 +1,5 @@
 package app.entity;
+
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ public class Device {
     // private String device_sec_classify_id;
     private Date device_create_time;
     private String device_desc;
-    private int device_usage;
+    private String device_usage;
     private Protocol protocol;
     private PriClassify priClassify;
     // private SecClassify secClassify;
@@ -99,11 +100,28 @@ public class Device {
         this.device_desc = device_desc;
     }
 
-    public int getDevice_usage() {
+    public String getDevice_usage() {
         return device_usage;
     }
 
-    public void setDevice_usage(int device_usage) {
+    public void setDevice_usage(String device_usage) {
         this.device_usage = device_usage;
     }
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "device_id='" + device_id + '\'' +
+                ", device_name='" + device_name + '\'' +
+                ", device_protocol_id='" + device_protocol_id + '\'' +
+                ", device_pri_classify_id='" + device_pri_classify_id + '\'' +
+                ", device_create_time=" + device_create_time +
+                ", device_desc='" + device_desc + '\'' +
+                ", device_usage=" + device_usage +
+                ", protocol=" + protocol.toString() +
+                ", priClassify=" + priClassify.toString() +
+                '}';
+    }
 }
+
+

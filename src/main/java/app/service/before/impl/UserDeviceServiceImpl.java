@@ -2,6 +2,8 @@ package app.service.before.impl;
 
 import app.dao.before.UserDeviceDao;
 import app.entity.UserDevice;
+import app.service.before.UserDeviceService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -11,8 +13,9 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:25
  */
-public class UserDeviceServiceImpl implements UserDeviceDao {
-    @Resource
+@Service
+public class UserDeviceServiceImpl implements UserDeviceService {
+    @Resource(name = "userDeviceDao")
     private UserDeviceDao userDeviceDao;
 
     @Override
@@ -21,8 +24,8 @@ public class UserDeviceServiceImpl implements UserDeviceDao {
     }
 
     @Override
-    public int deleteUserDeviceById(String userId, String deviceId) {
-        return userDeviceDao.deleteUserDeviceById(userId, deviceId);
+    public int deleteUserDeviceByAuth(String auth) {
+        return userDeviceDao.deleteUserDeviceByAuth(auth);
     }
 
     @Override
@@ -33,5 +36,15 @@ public class UserDeviceServiceImpl implements UserDeviceDao {
     @Override
     public List<UserDevice> findAllUserDevice(String id) {
         return userDeviceDao.findAllUserDevice(id);
+    }
+
+    @Override
+    public List<UserDevice> findUserDevice(UserDevice userDevice) {
+        return userDeviceDao.findUserDevice(userDevice);
+    }
+
+    @Override
+    public UserDevice findUserDeviceByAuth(String auth) {
+        return userDeviceDao.findUserDeviceByAuth(auth);
     }
 }

@@ -44,4 +44,14 @@ public class Data {
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
+
+    @Override
+    public String toString() {
+        return "Data{" +
+                "user_id='" + user_id + '\'' +
+                ", device_id='" + device_id + '\'' +
+                ", data='" + data + '\'' +
+                ", datetime=" + datetime +
+                '}';
+    }
 }

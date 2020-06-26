@@ -21,10 +21,10 @@
         <association property="device" javaType="Device" resultMap="device"/>
     </resultMap>
 
-    <resultMap id="userDeviceList" type="UserDeviceList">
-        <association property="user" javaType="User" resultMap="userList"/>
-        <collection property="userDevice" javaType="UserDevice" resultMap="UserDevice"/>
-    </resultMap>
+    <!--<resultMap id="userDeviceList" type="UserDeviceList">-->
+    <!--    <association property="user" javaType="User" resultMap="userList"/>-->
+    <!--    <collection property="userDevice" javaType="UserDevice" resultMap="UserDevice"/>-->
+    <!--</resultMap>-->
 
     <!--用户添加设备-->
     <insert id="addUserDevice" parameterType="UserDevice">
@@ -33,9 +33,7 @@
             user_id,
             device_id,
             device_status,
-            <if test="device_auth != null add device_auth != ''">
-                device_auth,
-            </if>
+            device_auth,
             <if test="device_addr != null add device_addr != ''">
                 device_addr,
             </if>
@@ -49,9 +47,7 @@
             #{user_id},
             #{device_id},
             #{device_status},
-            <if test="device_auth != null add device_auth != ''">
-                #{device_auth},
-            </if>
+            #{device_auth},
             <if test="device_addr != null add device_addr != ''">
                 #{device_addr},
             </if>
@@ -65,9 +61,66 @@
     </insert>
 
     <!--用户删除设备-->
-    <delete id="deleteDeviceById" parameterType="String">
-        delete from tb_device where user_id = #{userId} and device_id = #{deviceId}
+    <delete id="deleteDeviceByAuth" parameterType="String">
+        delete from tb_user_device where device_auth = #{auth}
     </delete>
 
+    <!--用户更新已添加设备的信息-->
+    <update id="updateUserDevice" parameterType="UserDevice">
+        update tb_user_device
+        device_auth = #{device_auth}
+        <set>
+            <if test="user_id != null and user_id != ''">
+                user_id = #{user_id}
+            </if>
+            <if test="device_id != null and device_id != ''">
+                device_id = #{device_id},
+            </if>
+            <if test="device_status != null and device_status != ''">
+                device_status = #{device_status},
+            </if>
+            <if test="device_addr != null and device_addr != ''">
+                device_addr = #{device_addr},
+            </if>
+            <if test="device_api != null and device_api != ''">
+                device_api = #{device_api},
+            </if>
+            <if test="device_desc != null and device_desc != ''">
+                device_desc = #{device_desc},
+            </if>
+        </set>
+    </update>
+
+    <select id="findAllUserDevice" parameterType="String" resultMap="userDeviceList">
+        select ud.* d.device_name, d.device_protocol_id
+        from tb_user_device as ud, tb_device as d
+        where ud.device_id = d.device_id
+        and ud.user_id = #{id}
+    </select>
+
+    <select id="findUserDevice" parameterType="UserDevice" resultMap="userDeviceList">
+        select ud.* d.device_name, d.device_protocol_id
+        from tb_user_deviceas ud, tb_device as d
+        <trim prefix="where" prefixOverrides="and">
+            and ud.device_id = d.device_id
+            and ud.user_id = #{user_id}
+            <if test="device_id !=null and device_id != ''">
+                and device_id like concat('%', #{device_id}, '%')
+            </if>
+            <if test="device_status != null and device_status != ''">
+                and device_status like concat('%', #{device_status}, '%')
+            </if>
+            <if test="device_auth !=null and device_auth != ''">
+                and device_auth like concat('%', #{device_auth}, '%')
+            </if>
+            <if test="device_addr != null and device_addr != ''">
+                and device_addr like concat('%', #{device_addr}, '%')
+            </if>
+        </trim>
+    </select>
+
+    <select id="findUserDeviceByAuth" parameterType="String" resultType="UserDevice">
+        select* from tb_user_device where device_auth = #{auth} limit 1
+    </select>
 
 </mapper>

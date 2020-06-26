@@ -45,7 +45,7 @@
     </delete>
 
     <!--更新用户信息-->
-    <update id="updateUserById" parameterType="user">
+    <update id="updateUser" parameterType="user">
         update tb_user
         <set>
             <if test="user_pwd != null and user_pwd != ''">
@@ -65,6 +65,13 @@
             </if>
         </set>
         where user_id = #{user_id}
+    </update>
+
+    <!--更新用户密码-->
+    <update id="updatePassword" parameterType="String">
+        update tb_user
+        set user_pwd = #{password}
+        where user_id = #{id}
     </update>
 
     <!--查询所有用户-->

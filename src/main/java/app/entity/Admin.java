@@ -78,4 +78,19 @@ public class Admin {
     public void setAdmin_role_id(String admin_role_id) {
         this.admin_role_id = admin_role_id;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "admin_id='" + admin_id + '\'' +
+                ", admin_pwd='" + admin_pwd + '\'' +
+                ", admin_name='" + admin_name + '\'' +
+                ", admin_phone='" + admin_phone + '\'' +
+                ", admin_email='" + admin_email + '\'' +
+                ", admin_location='" + admin_location + '\'' +
+                ", admin_role_id='" + admin_role_id + '\'' +
+                ", role=" + role.toString() +
+                '}';
+    }
 }
+

@@ -33,6 +33,11 @@ public class AdminServiceImpl implements AdminDao {
     }
 
     @Override
+    public int updatePassword(String id, String password){
+        return adminDao.updatePassword(id, password);
+    }
+
+    @Override
     public List<Admin> findAllAdmin() {
         return adminDao.findAllAdmin();
     }

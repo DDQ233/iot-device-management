@@ -29,8 +29,13 @@ public class UserServiceImpl implements UserDao {
     }
 
     @Override
-    public int updateUserById(User user) {
-        return userDao.updateUserById(user);
+    public int updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
+    @Override
+    public int updatePassword(String id, String password){
+        return userDao.updatePassword(id, password);
     }
 
     @Override

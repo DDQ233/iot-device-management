@@ -20,7 +20,10 @@ public interface UserDao {
     int deleteUserById(String id);
 
     // 更新用户信息
-    int updateUserById(User user);
+    int updateUser(User user);
+
+    // 修改用户密码
+    int updatePassword(String id, String password);
 
     // 查询所有用户
     List<User> findAllUser();

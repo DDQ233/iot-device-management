@@ -32,4 +32,13 @@ public class PriClassify {
     public void setPri_classify_desc(String pri_classify_desc) {
         this.pri_classify_desc = pri_classify_desc;
     }
+
+    @Override
+    public String toString() {
+        return "PriClassify{" +
+                "pri_classify_id='" + pri_classify_id + '\'' +
+                ", pri_classify_name='" + pri_classify_name + '\'' +
+                ", pri_classify_desc='" + pri_classify_desc + '\'' +
+                '}';
+    }
 }
