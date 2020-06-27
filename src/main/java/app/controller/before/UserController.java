@@ -35,13 +35,16 @@ public class UserController {
 
     @RequestMapping("/login")
     public String userLogin(
-            @RequestParam String id,
-            @RequestParam String pwd,
+            @ModelAttribute("user") User user,
             Model model,
             HttpSession httpSession) {
         System.out.println("> User login");
-        if (userService.checkLogin(id, pwd) > 0) {
-            httpSession.setAttribute("USER_ID", id);
+        String userId = user.getUser_id();
+        String userPwd = user.getUser_id();
+        System.out.println("> User id : " + user.getUser_id());
+        System.out.println("> User pwd : " + user.getUser_pwd());
+        if (userService.checkLogin(userId, userPwd) != null) {
+            httpSession.setAttribute("USER_ID", userId);
             return "redirect:/custom/list";
         } else {
             model.addAttribute("errorMsg", "用户名或密码错误");
@@ -57,7 +60,7 @@ public class UserController {
     }
 
     @RequestMapping("/register.html")
-    public String toUserRegisterPage(){
+    public String toUserRegisterPage() {
         return "userRegister";
     }
 
@@ -73,7 +76,7 @@ public class UserController {
     }
 
     @RequestMapping("/delete/user")
-    public String cancelUserAccount(HttpSession httpSession){
+    public String cancelUserAccount(HttpSession httpSession) {
         System.out.println("> Close user account.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         userService.cancelAccount(userId);
@@ -98,7 +101,7 @@ public class UserController {
     }
 
     @RequestMapping("/passwordModify")
-    public String toUpdateUserPasswordPage(HttpSession httpSession){
+    public String toUpdateUserPasswordPage(HttpSession httpSession) {
         System.out.println("> To update user password page.");
         return "updateUserPassword";
     }

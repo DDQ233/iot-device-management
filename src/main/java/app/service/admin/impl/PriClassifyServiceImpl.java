@@ -2,6 +2,7 @@ package app.service.admin.impl;
 
 import app.dao.admin.PriClassifyDao;
 import app.entity.PriClassify;
+import app.service.admin.PriClassifyService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,8 +14,8 @@ import java.util.List;
  * @Date 2020/6/25 21:44
  */
 @Service
-public class PriClassifyServiceImpl implements PriClassifyDao {
-    @Resource
+public class PriClassifyServiceImpl implements PriClassifyService {
+    @Resource(name = "priClassifyDao")
     private PriClassifyDao priClassifyDao;
 
     @Override

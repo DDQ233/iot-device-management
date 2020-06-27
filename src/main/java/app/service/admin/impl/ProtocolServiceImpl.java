@@ -2,6 +2,7 @@ package app.service.admin.impl;
 
 import app.dao.admin.ProtocolDao;
 import app.entity.Protocol;
+import app.service.admin.ProtocolService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,8 +14,8 @@ import java.util.List;
  * @Date 2020/6/25 20:25
  */
 @Service
-public class ProtocolServiceImpl implements ProtocolDao {
-    @Resource
+public class ProtocolServiceImpl implements ProtocolService {
+    @Resource(name = "protocolDao")
     private ProtocolDao protocolDao;
 
     @Override

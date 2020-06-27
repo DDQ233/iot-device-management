@@ -2,6 +2,7 @@ package app.service.admin.impl;
 
 import app.dao.admin.AdminDao;
 import app.entity.Admin;
+import app.service.admin.AdminService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,13 +14,18 @@ import java.util.List;
  * @Date 2020/6/16 11:35
  */
 @Service
-public class AdminServiceImpl implements AdminDao {
-    @Resource
+public class AdminServiceImpl implements AdminService {
+    @Resource(name = "adminDao")
     private AdminDao adminDao;
 
     @Override
-    public int addAdmin(Admin admin) {
+    public int register(Admin admin) {
         return adminDao.addAdmin(admin);
+    }
+
+    @Override
+    public Admin checkLogin(String id, String pwd) {
+        return adminDao.findAdminByIdAndPwd(id, pwd);
     }
 
     @Override
@@ -52,8 +58,4 @@ public class AdminServiceImpl implements AdminDao {
         return adminDao.findAdminById(id);
     }
 
-    @Override
-    public Admin findAdminByIdAndPwd(String id, String pwd) {
-        return adminDao.findAdminByIdAndPwd(id, pwd);
-    }
 }

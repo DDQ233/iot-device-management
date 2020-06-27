@@ -2,6 +2,8 @@ package app.service.admin.impl;
 
 import app.dao.admin.DeviceDao;
 import app.entity.Device;
+import app.service.admin.DeviceService;
+import app.service.before.DataService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,8 +15,8 @@ import java.util.List;
  * @Date 2020/6/25 20:24
  */
 @Service
-public class DeviceServiceImpl implements DeviceDao {
-    @Resource
+public class DeviceServiceImpl implements DeviceService {
+    @Resource(name = "deviceDao")
     private DeviceDao deviceDao;
 
     @Override
