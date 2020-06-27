@@ -6,14 +6,13 @@ import app.service.before.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @Description TO-DO
  * @Author DDQ
  * @Date 2020/6/16 11:35
  */
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
     @Resource(name = "userDao")
     private UserDao userDao;

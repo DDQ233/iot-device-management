@@ -14,7 +14,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:24
  */
-@Service
+@Service("deviceService")
 public class DeviceServiceImpl implements DeviceService {
     @Resource(name = "deviceDao")
     private DeviceDao deviceDao;

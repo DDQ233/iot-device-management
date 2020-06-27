@@ -22,15 +22,16 @@ public class UserController {
     @Resource(name = "userService")
     private UserService userService;
 
-    @RequestMapping("/login.html")
-    public String toUserLoginPage(HttpSession httpSession) {
+    @RequestMapping("/toLogin")
+    public String toUserLoginPage(@ModelAttribute("user")User user, Model model) {
         System.out.println("> To user login page.");
-        String id = httpSession.getAttribute("USER_ID").toString();
-        if (id != null && userService.findUserById(id) != null) {
-            return "redirect:/custom/list";
-        } else {
+        // String id = httpSession.getAttribute("USER_ID").toString();
+        // if (id != null && userService.findUserById(id) != null) {
+        //     return "redirect:/custom/list";
+        // } else {
+            model.addAttribute(user);
             return "userLogin";
-        }
+        // }
     }
 
     @RequestMapping("/login")
@@ -56,11 +57,12 @@ public class UserController {
     public String logout(HttpSession httpSession) {
         System.out.println("> User logout.");
         httpSession.invalidate();
-        return "redirect:/user/login.html";
+        return "redirect:/user/toLogin";
     }
 
-    @RequestMapping("/register.html")
+    @RequestMapping("/toRegister")
     public String toUserRegisterPage() {
+        System.out.println("> To user register page.");
         return "userRegister";
     }
 
@@ -72,7 +74,7 @@ public class UserController {
             return "userRegister";
         }
         userService.register(user);
-        return "redirect:/user/login.html";
+        return "redirect:/user/toLogin";
     }
 
     @RequestMapping("/delete/user")
@@ -81,7 +83,7 @@ public class UserController {
         String userId = httpSession.getAttribute("USER_ID").toString();
         userService.cancelAccount(userId);
         httpSession.invalidate();
-        return "redirect:/user/login.html";
+        return "redirect:/user/toLogin";
     }
 
     @RequestMapping("/update/userInfo")

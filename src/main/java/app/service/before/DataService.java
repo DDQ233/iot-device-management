@@ -11,6 +11,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:49
  */
+@Service
 public interface DataService {
     // 添加数据信息
     int addData(Data data);

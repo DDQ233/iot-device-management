@@ -10,6 +10,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:24
  */
+@Service
 public interface ProtocolService {
     // 添加设备接入协议
     int addProtocol(Protocol protocol);

@@ -1,7 +1,6 @@
 package app.controller.before;
 
 import app.dao.before.UserDeviceDao;
-import app.entity.Device;
 import app.entity.UserDevice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +30,7 @@ public class UserDeviceController {
         String userId = httpSession.getAttribute("USER_ID").toString();
         List<UserDevice> userDeviceList = userDeviceDao.findAllUserDevice(userId);
         httpSession.setAttribute("USER_DEVICE_LIST", userDeviceList);
-        return "userDeviceList";
+        return "userDeviceAdmin";
     }
 
     @RequestMapping("/addDevice")

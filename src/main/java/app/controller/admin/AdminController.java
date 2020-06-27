@@ -22,7 +22,7 @@ public class AdminController {
     @Resource(name = "adminService")
     private AdminService adminService;
 
-    @RequestMapping("/login.html")
+    @RequestMapping("/toLogin")
     public String toAdminLoginPage(HttpSession httpSession) {
         System.out.println("> To admin login page.");
         String id = httpSession.getAttribute("ADMIN_ID").toString();
@@ -41,7 +41,7 @@ public class AdminController {
             Model model,
             HttpSession httpSession) {
         System.out.println("> Admin login.");
-        if (adminService.checkLogin(id, pwd) > 0) {
+        if (adminService.checkLogin(id, pwd) != null) {
             httpSession.setAttribute("ADMIN_ID", id);
             httpSession.setAttribute("ADMIN_ROLE_ID", adminService.findAdminById(id).getAdmin_role_id());
             return "redirect:/IotDeviceAdmin";
@@ -58,7 +58,7 @@ public class AdminController {
         return "redirect:/admin/login.html";
     }
 
-    @RequestMapping("/register.html")
+    @RequestMapping("/toRegister")
     public String toAdminRegisterPage() {
         System.out.println("> To admin register page.");
         return "adminRegister";

@@ -4,6 +4,7 @@ package app.service.before.impl;
 import app.dao.before.DataDao;
 import app.entity.Data;
 import app.service.before.DataService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 21:07
  */
+@Service("dataService")
 public class DataServiceImpl implements DataService {
     @Resource(name = "dataDao")
     private DataDao dataDao;

@@ -10,6 +10,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/16 11:34
  */
+@Service
 public interface AdminService {
     // 管理员注册
     int register(Admin admin);

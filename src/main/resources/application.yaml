@@ -1,7 +1,7 @@
 server:
   port: 8088
   servlet:
-    context-path: /iot-device
+    context-path: /
 
 spring:
   datasource:
@@ -25,5 +25,5 @@ spring:
     basename: i18n
 
 mybatis:
-  config-location: classpath:mapper/*.xml
-  type-aliases-package: com.sise.app.entity
+  type-aliases-package: app.entity
+  mapper-locations: classpath:mapper/*.xml

@@ -1,6 +1,7 @@
 package app.service.admin;
 
 import app.entity.PriClassify;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 21:35
  */
+@Service
 public interface PriClassifyService {
     // 添加一级分类
     int addPriClassify(PriClassify priClassify);

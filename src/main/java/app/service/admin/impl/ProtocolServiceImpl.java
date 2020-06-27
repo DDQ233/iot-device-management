@@ -13,7 +13,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:25
  */
-@Service
+@Service("protocolService")
 public class ProtocolServiceImpl implements ProtocolService {
     @Resource(name = "protocolDao")
     private ProtocolDao protocolDao;

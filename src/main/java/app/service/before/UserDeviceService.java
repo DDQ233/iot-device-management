@@ -9,6 +9,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 20:24
  */
+@Service
 public interface UserDeviceService {
     // 用户添加设备
     int addUserDevice(UserDevice userDevice);

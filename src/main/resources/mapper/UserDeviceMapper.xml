@@ -18,7 +18,7 @@
         <result property="device_api" column="device_api"/>
         <result property="device_desc" column="device_desc"/>
         <result property="device_name" column="device_name"/>
-        <association property="device" javaType="Device" resultMap="device"/>
+        <association property="device" javaType="Device" resultMap="deviceList"/>
     </resultMap>
 
     <!--<resultMap id="userDeviceList" type="UserDeviceList">-->
@@ -42,6 +42,7 @@
             </if>
             <if test="device_desc != null add device_desc != ''">
                 device_desc,
+            </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             #{user_id},

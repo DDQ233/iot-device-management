@@ -13,7 +13,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/16 11:35
  */
-@Service
+@Service("adminService")
 public class AdminServiceImpl implements AdminService {
     @Resource(name = "adminDao")
     private AdminDao adminDao;

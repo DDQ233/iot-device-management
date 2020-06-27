@@ -13,7 +13,7 @@ import java.util.List;
  * @Author DDQ
  * @Date 2020/6/25 21:44
  */
-@Service
+@Service("priClassifyService")
 public class PriClassifyServiceImpl implements PriClassifyService {
     @Resource(name = "priClassifyDao")
     private PriClassifyDao priClassifyDao;
