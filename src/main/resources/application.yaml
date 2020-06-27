@@ -1,7 +1,7 @@
 server:
   port: 8088
   servlet:
-    context-path: /IOT-Device
+    context-path: /iot-device
 
 spring:
   datasource:
