@@ -1,4 +1,5 @@
 package app.service.before;
+
 import app.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public interface UserService {
     int register(User user);
 
     // 用户登录
-    User checkLogin(String id, String pwd);
+    User checkLogin(User user);
 
     // 用户注销账号
     int cancelAccount(String id);
@@ -22,7 +23,7 @@ public interface UserService {
     int updateUser(User user);
 
     // 修改用户密码
-    int updatePassword(String id, String password);
+    int updatePassword(String id, String pwd);
 
     // 查询用户
     User findUser(User user);

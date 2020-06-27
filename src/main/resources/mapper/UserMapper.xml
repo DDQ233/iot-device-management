@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sise.app.dao.UserDao">
+<mapper namespace="app.dao.before.UserDao">
+
+    <resultMap id="userList" type="user">
+        <result property="user_id" column="user_id"/>
+        <result property="user_pwd" column="user_pwd"/>
+        <result property="user_name" column="user_name"/>
+        <result property="user_phone" column="user_phone"/>
+        <result property="user_email" column="user_email"/>
+        <result property="user_location" column="user_location"/>
+    </resultMap>
+
     <!--添加用户-->
     <insert id="addUser" parameterType="user">
         insert into tb_user
@@ -70,17 +80,17 @@
     <!--更新用户密码-->
     <update id="updatePassword" parameterType="String">
         update tb_user
-        set user_pwd = #{password}
+        set user_pwd = #{pwd}
         where user_id = #{id}
     </update>
 
     <!--查询所有用户-->
-    <select id="findAllUser" resultMap="user">
+    <select id="findAllUser" resultMap="userList">
         select* from tb_user;
     </select>
 
     <!--查询用户-->
-    <select id="findUser" parameterType="user" resultMap="user">
+    <select id="findUser" parameterType="user" resultMap="userList">
         select* from tb_user
         <where>
             <if test="user_id !=null and user_id != ''">
@@ -107,8 +117,8 @@
     </select>
 
     <!--根据用户名和密码查询用户信息-->
-    <select id="findUserByIdAndPwd" parameterType="String" resultType="user">
-        select* from tb_user where user_id = #{id} and user_pwd = #{pwd}
+    <select id="findUserByIdAndPwd" parameterType="user" resultType="user">
+        select* from tb_user where user_id = #{user_id} and user_pwd = #{user_pwd} limit 1
     </select>
 
 </mapper>

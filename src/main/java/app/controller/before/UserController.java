@@ -40,12 +40,10 @@ public class UserController {
             Model model,
             HttpSession httpSession) {
         System.out.println("> User login");
-        String userId = user.getUser_id();
-        String userPwd = user.getUser_id();
         System.out.println("> User id : " + user.getUser_id());
         System.out.println("> User pwd : " + user.getUser_pwd());
-        if (userService.checkLogin(userId, userPwd) != null) {
-            httpSession.setAttribute("USER_ID", userId);
+        if (userService.checkLogin(user) != null) {
+            httpSession.setAttribute("USER_ID", user.getUser_id());
             return "redirect:/custom/list";
         } else {
             model.addAttribute("errorMsg", "用户名或密码错误");

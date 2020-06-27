@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int updatePassword(String id, String password) {
-        return userDao.updatePassword(id, password);
+    public int updatePassword(String id, String pwd) {
+        return userDao.updatePassword(id, pwd);
     }
 
     // @Override
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User checkLogin(String id, String pwd) {
-        return userDao.findUserByIdAndPwd(id, pwd);
+    public User checkLogin(User user) {
+        return userDao.findUserByIdAndPwd(user);
     }
 }

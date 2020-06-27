@@ -23,7 +23,7 @@ public interface UserDao {
     int updateUser(User user);
 
     // 修改用户密码
-    int updatePassword(String id, String password);
+    int updatePassword(String id, String pwd);
 
     // 查询所有用户
     List<User> findAllUser();
@@ -35,5 +35,5 @@ public interface UserDao {
     User findUserById(String id);
 
     // 根据用户名和密码查询用户信息
-    User findUserByIdAndPwd(String id, String pwd);
+    User findUserByIdAndPwd(User user);
 }
