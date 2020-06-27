@@ -35,7 +35,7 @@ public class AdminController {
             }
         }
         model.addAttribute(admin);
-        return "adminLogin";
+        return "admin/adminLogin";
     }
 
     // 这里AdminController涉及到不同权限的不同操作，需要改进
@@ -53,7 +53,7 @@ public class AdminController {
             return "redirect:/iotDeviceAdmin";
         } else {
             model.addAttribute("errorMsg", "用户名或密码错误");
-            return "adminLogin";
+            return "admin/adminLogin";
         }
     }
 
@@ -67,7 +67,7 @@ public class AdminController {
     @RequestMapping("/toRegister")
     public String toAdminRegisterPage() {
         System.out.println("> To admin register page.");
-        return "adminRegister";
+        return "admin/adminRegister";
     }
 
     @RequestMapping("/register")
@@ -75,7 +75,7 @@ public class AdminController {
         System.out.println("> Admin register.");
         if (adminService.findAdminById(admin.getAdmin_id()) != null) {
             model.addAttribute("errorMsg", "该账号已经存在");
-            return "adminRegister";
+            return "admin/adminRegister";
         }
         adminService.register(admin);
         return "redirect:/admin/toLogin";
@@ -84,7 +84,7 @@ public class AdminController {
     @RequestMapping("/deviceAdmin")
     public String toDeviceAdminPage() {
         System.out.println("> To device admin page.");
-        return "deviceAdmin";
+        return "admin/deviceAdmin";
     }
 
     @RequestMapping("/adminInfo")
@@ -92,7 +92,7 @@ public class AdminController {
         System.out.println("> To admin information page.");
         String adminId = httpSession.getAttribute("ADMIN_ID").toString();
         httpSession.setAttribute("ADMIN_INFO", adminService.findAdminById(adminId));
-        return "adminInfo";
+        return "admin/adminInfo";
     }
 
     @RequestMapping("/update/admin")
@@ -106,7 +106,7 @@ public class AdminController {
     @RequestMapping("/passwordModify")
     public String toUpdateUserPasswordPage(HttpSession httpSession) {
         System.out.println("> To update admin password page.");
-        return "updateAdminPassword";
+        return "admin/updateAdminPassword";
     }
 
     @RequestMapping("/update/password")
@@ -126,7 +126,7 @@ public class AdminController {
             return "redirect:/admin/toLogin";
         } else {
             model.addAttribute("errorMsg", "原密码错误");
-            return "updateAdminPassword";
+            return "admin/updateAdminPassword";
         }
     }
 }

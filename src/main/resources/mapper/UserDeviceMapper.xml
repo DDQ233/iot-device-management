@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="app.dao.UserDeviceDao">
+<mapper namespace="app.dao.before.UserDeviceDao">
 
     <resultMap id="deviceList" type="device">
         <!--<result property="device_id" column="device_id"/>-->
@@ -93,14 +93,14 @@
     </update>
 
     <select id="findAllUserDevice" parameterType="String" resultMap="userDeviceList">
-        select ud.* d.device_name, d.device_protocol_id
+        select ud.*, d.device_name, d.device_protocol_id
         from tb_user_device as ud, tb_device as d
         where ud.device_id = d.device_id
         and ud.user_id = #{id}
     </select>
 
     <select id="findUserDevice" parameterType="UserDevice" resultMap="userDeviceList">
-        select ud.* d.device_name, d.device_protocol_id
+        select ud.*, d.device_name, d.device_protocol_id
         from tb_user_deviceas ud, tb_device as d
         <trim prefix="where" prefixOverrides="and">
             and ud.device_id = d.device_id
@@ -122,6 +122,14 @@
 
     <select id="findUserDeviceByAuth" parameterType="String" resultType="UserDevice">
         select* from tb_user_device where device_auth = #{auth} limit 1
+    </select>
+
+    <select id="countDevice" parameterType="String" resultType="Integer">
+        select count(1) from tb_user_device where user_id = #{id}
+    </select>
+
+    <select id="countOnlineDevice" parameterType="String" resultType="Integer">
+        select count(1) from tb_user_device where user_id = #{id} and device_status = 'ON'
     </select>
 
 </mapper>

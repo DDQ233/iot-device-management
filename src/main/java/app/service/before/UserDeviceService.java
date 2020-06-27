@@ -29,6 +29,12 @@ public interface UserDeviceService {
     // 根据设备认证/鉴权信息查询设备
     UserDevice findUserDeviceByAuth(String auth);
 
+    // 用户设备计数
+    int countDevice(String id);
+
+    // 用户已上线设备计数
+    int countOnlineDevice(String id);
+
     // 查询已添加的设备
     // UserDevice findUserDevice(UserDevice userDevice);
 

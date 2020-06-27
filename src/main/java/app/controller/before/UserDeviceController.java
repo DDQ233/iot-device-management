@@ -1,7 +1,9 @@
 package app.controller.before;
 
-import app.dao.before.UserDeviceDao;
 import app.entity.UserDevice;
+import app.service.before.DataService;
+import app.service.before.UserDeviceService;
+import app.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,51 +23,65 @@ import java.util.List;
 @Controller
 @RequestMapping("/custom")
 public class UserDeviceController {
-    @Resource(name = "userDeviceDao")
-    private UserDeviceDao userDeviceDao;
+    @Resource(name = "dataService")
+    private DataService dataService;
+    @Resource(name = "userDeviceService")
+    private UserDeviceService userDeviceService;
 
     @RequestMapping("/list")
-    public String toUserCustomPage(HttpSession httpSession) {
+    public String toUserCustomPage(Model model, HttpSession httpSession) {
         System.out.println("> To user custom page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
-        List<UserDevice> userDeviceList = userDeviceDao.findAllUserDevice(userId);
+        List<UserDevice> userDeviceList = userDeviceService.findAllUserDevice(userId);
         httpSession.setAttribute("USER_DEVICE_LIST", userDeviceList);
-        return "userDeviceAdmin";
+        model.addAttribute("currentTime", Utils.getCurrentTime());
+        return "before/userDeviceAdmin";
+    }
+
+    @RequestMapping("/home")
+    public String toIotDeviceAdminPage(Model model, HttpSession httpSession) {
+        System.out.println("> To home page.");
+        String userId = httpSession.getAttribute("USER_ID").toString();
+        model.addAttribute("currentTime", Utils.getCurrentTime());
+        model.addAttribute("deviceNum", userDeviceService.countDevice(userId));
+        model.addAttribute("dataNum", dataService.count(userId));
+        model.addAttribute("deviceOnlineNum", userDeviceService.countOnlineDevice(userId));
+        return "before/home";
     }
 
     @RequestMapping("/addDevice")
     public String toAddDevicePage() {
         System.out.println("> To add user device page.");
-        return "addUserDevice";
+        return "before/addUserDevice";
     }
 
     @RequestMapping("/add")
     public String addUserDevice(@ModelAttribute("userDevice") UserDevice userDevice) {
         System.out.println("> Add user device.");
-        userDeviceDao.addUserDevice(userDevice);
+        userDeviceService.addUserDevice(userDevice);
         return "forward:/custom/list";
     }
 
     @RequestMapping("/delete/{userDeviceAuth}")
     public String deleteUserDeviceById(@PathVariable String userDeviceAuth, HttpSession httpSession) {
         System.out.println("> Delete user device.");
-        userDeviceDao.deleteUserDeviceByAuth(userDeviceAuth);
+        userDeviceService.deleteUserDeviceByAuth(userDeviceAuth);
         return "forward:/custom/list";
     }
 
     @RequestMapping("/userDeviceInfo/{deviceAuth}")
     public String toUserDeviceInfoPage(@PathVariable String deviceAuth, Model model) {
         System.out.println("> To user device information page.");
-        UserDevice userDevice = userDeviceDao.findUserDeviceByAuth(deviceAuth);
+        UserDevice userDevice = userDeviceService.findUserDeviceByAuth(deviceAuth);
         model.addAttribute(userDevice);
-        return "userDeviceInfo";
+        return "before/userDeviceInfo";
     }
 
     @RequestMapping("/searchUserDevice")
     public String toSearchUserDevicePage(HttpSession httpSession) {
         System.out.println("> To search user device page.");
         httpSession.removeAttribute("SEARCH_USER_DEVICE_LIST");
-        return "searchUserDevice";
+        return "before/searchUserDevice";
     }
 
     @RequestMapping("/search")
@@ -84,9 +100,9 @@ public class UserDeviceController {
         userDevice.setDevice_status(deviceStatus);
         userDevice.setDevice_auth(deviceAuth);
         userDevice.setDevice_addr(addr);
-        List<UserDevice> userDeviceList = userDeviceDao.findUserDevice(userDevice);
+        List<UserDevice> userDeviceList = userDeviceService.findUserDevice(userDevice);
         httpSession.removeAttribute("SEARCH_USER_DEVICE_LIST");
         httpSession.setAttribute("SEARCH_USER_DEVICE_LIST", userDeviceList);
-        return "searchUserDevice";
+        return "before/searchUserDevice";
     }
 }

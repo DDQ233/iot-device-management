@@ -35,7 +35,7 @@ public class UserController {
             }
         }
         model.addAttribute(user);
-        return "userLogin";
+        return "before/userLogin";
     }
 
     @RequestMapping("/login")
@@ -51,7 +51,7 @@ public class UserController {
             return "redirect:/custom/list";
         } else {
             model.addAttribute("errorMsg", "用户名或密码错误");
-            return "userLogin";
+            return "before/userLogin";
         }
     }
 
@@ -65,7 +65,7 @@ public class UserController {
     @RequestMapping("/toRegister")
     public String toUserRegisterPage() {
         System.out.println("> To user register page.");
-        return "userRegister";
+        return "before/userRegister";
     }
 
     @RequestMapping("/register")
@@ -73,7 +73,7 @@ public class UserController {
         System.out.println("> Admin register.");
         if (userService.findUserById(user.getUser_id()) != null) {
             model.addAttribute("errorMsg", "该账号已经存在");
-            return "userRegister";
+            return "before/userRegister";
         }
         userService.register(user);
         return "redirect:/user/toLogin";
@@ -93,7 +93,7 @@ public class UserController {
         System.out.println("> To user information page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         httpSession.setAttribute("USER_INFO", userService.findUserById(userId));
-        return "userInfo";
+        return "before/userInfo";
     }
 
     @RequestMapping("/update/user")
@@ -107,7 +107,7 @@ public class UserController {
     @RequestMapping("/passwordModify")
     public String toUpdateUserPasswordPage(HttpSession httpSession) {
         System.out.println("> To update user password page.");
-        return "updateUserPassword";
+        return "before/updateUserPassword";
     }
 
     @RequestMapping("/update/password")
@@ -127,7 +127,7 @@ public class UserController {
             return "redirect:/user/login";
         } else {
             model.addAttribute("errorMsg", "原密码错误");
-            return "updateUserPassword";
+            return "before/updateUserPassword";
         }
     }
 }

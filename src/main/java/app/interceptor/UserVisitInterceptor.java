@@ -20,16 +20,20 @@ public class UserVisitInterceptor implements HandlerInterceptor {
         // 获取请求的URL
         String url = request.getRequestURI();
         // URL : 除了 login.html 与 register.html 可以公开访问，其他的 URL 都进行拦截
-        if (url.indexOf("/user/login.html") > 0 || url.indexOf("/user/register.html") > 0) {
+        if (url.indexOf("/user/toLogin") > 0 || url.indexOf("/user/toRegister") > 0) {
             return true;
         }
         // 获取 Session
         HttpSession httpSession = request.getSession();
         // 判断 Session 中是否有用户 ID 信息
-        if(httpSession.getAttribute("USER_ID")!=null){
+        if (httpSession.getAttribute("USER_ID") != null) {
+
             return true;
+        } else {
+            // request.getRequestDispatcher("userLogin.html").forward(request, response);
+            response.sendRedirect("/user/toLogin");
+            return false;
         }
-        return false;
     }
 
     @Override

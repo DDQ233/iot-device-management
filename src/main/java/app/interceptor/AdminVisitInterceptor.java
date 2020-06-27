@@ -20,18 +20,19 @@ public class AdminVisitInterceptor implements HandlerInterceptor {
         // 获取请求的URL
         String url = request.getRequestURI();
         // URL : 除了 login.html 与 register.html 可以公开访问，其他的 URL 都进行拦截
-        if (url.indexOf("/admin/login.html") > 0 || url.indexOf("/admin/register.html") > 0) {
+        if (url.indexOf("/admin/toLogin") > 0 || url.indexOf("/admin/toRegister") > 0) {
             return true;
         }
         // 获取 Session
         HttpSession httpSession = request.getSession();
         // 判断 Session 中是否有用户 ID 信息
-        if(httpSession.getAttribute("ADMIN_ID")!=null){
+        if (httpSession.getAttribute("ADMIN_ID") != null) {
             return true;
         } else {
-            request.getRequestDispatcher("adminLogin.html").forward(request, response);
+            // request.getRequestDispatcher("adminLogin.html").forward(request, response);
+            response.sendRedirect("/admin/toLogin");
+            return true;
         }
-        return false;
     }
 
     @Override

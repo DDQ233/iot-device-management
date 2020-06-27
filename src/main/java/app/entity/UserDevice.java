@@ -1,4 +1,5 @@
 package app.entity;
+
 /**
  * @Description TO-DO
  * @Author DDQ
@@ -12,6 +13,8 @@ public class UserDevice {
     private String device_addr;
     private String device_api;
     private String device_desc;
+    private String device_name;
+    private String device_protocol_id;
     private Device device;
 
     public Device getDevice() {
@@ -78,6 +81,22 @@ public class UserDevice {
         this.device_desc = device_desc;
     }
 
+    public String getDevice_name() {
+        return device_name;
+    }
+
+    public void setDevice_name(String device_name) {
+        this.device_name = device_name;
+    }
+
+    public String getDevice_protocol_id() {
+        return device_protocol_id;
+    }
+
+    public void setDevice_protocol_id(String device_protocol_id) {
+        this.device_protocol_id = device_protocol_id;
+    }
+
     @Override
     public String toString() {
         return "UserDevice{" +
@@ -88,6 +107,8 @@ public class UserDevice {
                 ", device_addr='" + device_addr + '\'' +
                 ", device_api='" + device_api + '\'' +
                 ", device_desc='" + device_desc + '\'' +
+                ", device_name='" + device_name + '\'' +
+                ", device_protocol_id='" + device_protocol_id + '\'' +
                 ", device=" + device.toString() +
                 '}';
     }

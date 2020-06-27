@@ -54,4 +54,9 @@ public class DataServiceImpl implements DataService {
     public List<Data> findDataByTime(Date fromDate, Date toDate) {
         return dataDao.findDataByTime(fromDate, toDate);
     }
+
+    @Override
+    public int count(String id) {
+        return dataDao.count(id);
+    }
 }

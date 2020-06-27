@@ -47,4 +47,16 @@ public class UserDeviceServiceImpl implements UserDeviceService {
     public UserDevice findUserDeviceByAuth(String auth) {
         return userDeviceDao.findUserDeviceByAuth(auth);
     }
+
+    @Override
+    public int countDevice(String id) {
+        return userDeviceDao.countDevice(id);
+    }
+
+    @Override
+    public int countOnlineDevice(String id) {
+        return userDeviceDao.countOnlineDevice(id);
+    }
+
+
 }

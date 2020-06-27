@@ -1,8 +1,13 @@
 package app.controller;
 
+import app.entity.User;
+import app.service.before.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -12,11 +17,29 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class PageJumpController {
-    @RequestMapping("/IotDeviceAdmin.")
-    public String toIotDeviceAdminPage(HttpSession httpSession) {
-        System.out.println("> To iot device administration page.");
+    @Resource(name = "userService")
+    private UserService userService;
 
-        return "iotDeviceAdmin";
+    @RequestMapping("/")
+    public String toUserLoginPage(
+            @ModelAttribute("user") User user,
+            Model model,
+            HttpSession httpSession) {
+        System.out.println("> To root page.");
+        Object id = httpSession.getAttribute("USER_ID");
+        if (id != null) {
+            if (userService.findUserById(id.toString()) != null) {
+                return "redirect:/custom/list";
+            }
+        }
+        model.addAttribute(user);
+        return "redirect:/user/toLogin";
+    }
+
+    @RequestMapping("/404")
+    public String toErrorPage(){
+        System.out.println("> To error page.");
+        return "common/error";
     }
 
     @RequestMapping("/IotDevice")

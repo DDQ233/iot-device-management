@@ -33,4 +33,7 @@ public interface DataService {
 
     // 根据日期查询数据
     List<Data> findDataByTime(Date fromDate, Date toDate);
+
+    // 查询数据总量
+    int count(String id);
 }
