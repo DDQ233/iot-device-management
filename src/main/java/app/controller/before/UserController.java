@@ -23,15 +23,19 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/toLogin")
-    public String toUserLoginPage(@ModelAttribute("user")User user, Model model) {
+    public String toUserLoginPage(
+            @ModelAttribute("user") User user,
+            Model model,
+            HttpSession httpSession) {
         System.out.println("> To user login page.");
-        // String id = httpSession.getAttribute("USER_ID").toString();
-        // if (id != null && userService.findUserById(id) != null) {
-        //     return "redirect:/custom/list";
-        // } else {
-            model.addAttribute(user);
-            return "userLogin";
-        // }
+        Object id = httpSession.getAttribute("USER_ID");
+        if (id != null) {
+            if (userService.findUserById(id.toString()) != null) {
+                return "redirect:/custom/list";
+            }
+        }
+        model.addAttribute(user);
+        return "userLogin";
     }
 
     @RequestMapping("/login")

@@ -16,7 +16,7 @@ public interface AdminService {
     int register(Admin admin);
 
     // 管理员登录
-    Admin checkLogin(String id, String pwd);
+    Admin checkLogin(Admin admin);
 
     // 根据 ID 删除管理员信息
     int deleteAdminById(String id);

@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1576261_51iq19kjpqg.css">
-  <link rel="stylesheet" href="css/login.css">
-  <title>LOGIN</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/adminLogin.css}">
+    <link rel="stylesheet" th:href="@{//at.alicdn.com/t/font_1576261_51iq19kjpqg.css}">
+    <title>IotDevice</title>
 </head>
 <body>
-  <div class="form-wrapper">
-    <div class="header">login</div>
+<div class="form-wrapper">
+    <div class="header">Admin Login</div>
     <div class="input-wrapper">
-      <form name="form_login" action="login" method="post">
-        <div class="border-wrapper">
-          <input type="text" name="username" placeholder="username" class="border-item">
+        <form name="form_login" th:action="@{/admin/login}" method="post" th:object="${admin}">
+            <div class="border-wrapper">
+                <input th:field="*{admin_id}" type="text" th:placeholder="用户名" class="border-item">
+            </div>
+            <div class="border-wrapper">
+                <input th:field="*{admin_pwd}" type="password" th:placeholder="密码" class="border-item">
+            </div>
+            <div class="action">
+                <input class="btn" type="submit" th:value="登录">
+            </div>
+            <p th:text="${errorMsg}"/>
+        </form>
+    </div>
+    <!--
+        <div class="icon-wrapper">
+          <i class="iconfont phs-weixin"></i>
+          <i class="iconfont phs-weibo"></i>
+          <i class="iconfont phs-github"></i>
         </div>
-        <div class="border-wrapper">
-          <input type="password" name="password" placeholder="password" class="border-item">
-        </div>
-      </form>
-    </div>
-    <div class="action">
-      <div class="btn">login</div>
-    </div>
-<!--
-    <div class="icon-wrapper">
-      <i class="iconfont phs-weixin"></i>
-      <i class="iconfont phs-weibo"></i>
-      <i class="iconfont phs-github"></i>
-    </div>
--->
-  </div>
+    -->
+</div>
 </body>
 </html>

@@ -37,6 +37,6 @@ public interface AdminDao {
     Admin findAdminById(String id);
 
     // 根据用户名和密码查询管理员信息
-    Admin findAdminByIdAndPwd(String id, String pwd);
+    Admin findAdminByIdAndPwd(Admin admin);
 
 }

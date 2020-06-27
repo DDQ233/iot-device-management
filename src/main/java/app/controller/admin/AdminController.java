@@ -23,28 +23,34 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping("/toLogin")
-    public String toAdminLoginPage(HttpSession httpSession) {
+    public String toAdminLoginPage(
+            @ModelAttribute("admin") Admin admin,
+            Model model,
+            HttpSession httpSession) {
         System.out.println("> To admin login page.");
-        String id = httpSession.getAttribute("ADMIN_ID").toString();
-        if (id != null && adminService.findAdminById(id) != null) {
-            return "redirect:/IotDeviceAdmin";
-        } else {
-            return "adminLogin";
+        Object id = httpSession.getAttribute("ADMIN_ID");
+        if (id != null) {
+            if (adminService.findAdminById(id.toString()) != null) {
+                return "redirect:/iotDeviceAdmin";
+            }
         }
+        model.addAttribute(admin);
+        return "adminLogin";
     }
 
     // 这里AdminController涉及到不同权限的不同操作，需要改进
     @RequestMapping("/login")
     public String adminLogin(
-            @RequestParam String id,
-            @RequestParam String pwd,
+            @ModelAttribute("admin") Admin admin,
             Model model,
             HttpSession httpSession) {
         System.out.println("> Admin login.");
-        if (adminService.checkLogin(id, pwd) != null) {
-            httpSession.setAttribute("ADMIN_ID", id);
-            httpSession.setAttribute("ADMIN_ROLE_ID", adminService.findAdminById(id).getAdmin_role_id());
-            return "redirect:/IotDeviceAdmin";
+        System.out.println("> Admin id : " + admin.getAdmin_id());
+        System.out.println("> Admin pwd : " + admin.getAdmin_pwd());
+        if (adminService.checkLogin(admin) != null) {
+            httpSession.setAttribute("ADMIN_ID", admin.getAdmin_id());
+            httpSession.setAttribute("ADMIN_ROLE_ID", adminService.findAdminById(admin.getAdmin_id()).getAdmin_role_id());
+            return "redirect:/iotDeviceAdmin";
         } else {
             model.addAttribute("errorMsg", "用户名或密码错误");
             return "adminLogin";
@@ -55,7 +61,7 @@ public class AdminController {
     public String logout(HttpSession httpSession) {
         System.out.println("> Admin logout.");
         httpSession.invalidate();
-        return "redirect:/admin/login.html";
+        return "redirect:/admin/toLogin";
     }
 
     @RequestMapping("/toRegister")
@@ -72,7 +78,7 @@ public class AdminController {
             return "adminRegister";
         }
         adminService.register(admin);
-        return "redirect:/admin/login.html";
+        return "redirect:/admin/toLogin";
     }
 
     @RequestMapping("/deviceAdmin")
@@ -117,7 +123,7 @@ public class AdminController {
         if (adminService.findAdmin(admin) != null) {
             adminService.updatePassword(adminId, newPassword);
             httpSession.invalidate();
-            return "redirect:/admin/login";
+            return "redirect:/admin/toLogin";
         } else {
             model.addAttribute("errorMsg", "原密码错误");
             return "updateAdminPassword";

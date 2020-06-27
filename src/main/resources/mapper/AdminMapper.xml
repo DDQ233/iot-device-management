@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="app.dao.AdminDao">
+<mapper namespace="app.dao.admin.AdminDao">
 
     <resultMap id="roleList" type="role">
         <!--<result property="role_id" column="role_id"/>-->
@@ -126,6 +126,6 @@
 
     <!--根据用户名和密码查询管理员信息-->
     <select id="findAdminByIdAndPwd" parameterType="String" resultType="admin">
-        select* from tb_admin where admin_id = #{id} and admin_pwd = #{pwd} limit 1
+        select* from tb_admin where admin_id = #{admin_id} and admin_pwd = #{admin_pwd} limit 1
     </select>
 </mapper>

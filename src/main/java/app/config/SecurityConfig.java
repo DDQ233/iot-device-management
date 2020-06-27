@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/user/login.html",
                 "/admin/login",
                 "/admin/toLogin",
-                "/admin/login.html",
+                "/admin/login.html"
         };
         String[] registerUrlPermit = new String[]{
                 "/user/register",
@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/admin/register.html"
         };
         String[] staticPermit = new String[]{
+                "/static/**",
                 "/css/**",
                 "/fonts/**",
                 "/images/**",
@@ -46,9 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         };
 
         http.authorizeRequests()
+                .antMatchers(staticPermit).permitAll()
                 .antMatchers(loginUrlPermit).permitAll()
-                .antMatchers(registerUrlPermit).permitAll()
-                .antMatchers(staticPermit).permitAll();
+                .antMatchers(registerUrlPermit).permitAll();
                 // .anyRequest().authenticated();
 
         // http.formLogin()

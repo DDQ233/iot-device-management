@@ -24,8 +24,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Admin checkLogin(String id, String pwd) {
-        return adminDao.findAdminByIdAndPwd(id, pwd);
+    public Admin checkLogin(Admin admin) {
+        return adminDao.findAdminByIdAndPwd(admin);
     }
 
     @Override
