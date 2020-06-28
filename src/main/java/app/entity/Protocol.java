@@ -6,8 +6,8 @@ package app.entity;
  */
 public class Protocol {
     private String device_protocol_id;
-    private String device_protocol_name;
-    private String device_protocol_desc;
+    private String protocol_name;
+    private String protocol_desc;
 
     public String getDevice_protocol_id() {
         return device_protocol_id;
@@ -17,28 +17,28 @@ public class Protocol {
         this.device_protocol_id = device_protocol_id;
     }
 
-    public String getDevice_protocol_name() {
-        return device_protocol_name;
+    public String getProtocol_name() {
+        return protocol_name;
     }
 
-    public void setDevice_protocol_name(String device_protocol_name) {
-        this.device_protocol_name = device_protocol_name;
+    public void setProtocol_name(String protocol_name) {
+        this.protocol_name = protocol_name;
     }
 
-    public String getDevice_protocol_desc() {
-        return device_protocol_desc;
+    public String getProtocol_desc() {
+        return protocol_desc;
     }
 
-    public void setDevice_protocol_desc(String device_protocol_desc) {
-        this.device_protocol_desc = device_protocol_desc;
+    public void setProtocol_desc(String protocol_desc) {
+        this.protocol_desc = protocol_desc;
     }
 
     @Override
     public String toString() {
         return "Protocol{" +
                 "device_protocol_id='" + device_protocol_id + '\'' +
-                ", device_protocol_name='" + device_protocol_name + '\'' +
-                ", device_protocol_desc='" + device_protocol_desc + '\'' +
+                ", protocol_name='" + protocol_name + '\'' +
+                ", protocol_desc='" + protocol_desc + '\'' +
                 '}';
     }
 }

@@ -59,7 +59,7 @@
 
 	Xadmin.prototype.add_lay_tab = function(title,url,id) {
 		element.tabAdd('xbs_tab', {
-	       title: title 
+	       title: title
 	        ,content: '<iframe tab-id="'+id+'" frameborder="0" src="'+url+'" scrolling="yes" class="x-iframe"></iframe>'
 	        ,id: id
 	    })
@@ -73,7 +73,7 @@
 	 * @param  {Boolean} full  [全屏]
 	 * @return {[type]}        [description]
 	 */
-	Xadmin.prototype.open = function (title,url,w,h,full) {
+	Xadmin.prototype.open = function (title,url,param,w,h,full) {
 		if (title == null || title == '') {
 	        var title=false;
 	    };
@@ -86,18 +86,32 @@
 	    if (h == null || h == '') {
 	        var h=($(window).height() - 50);
 	    };
-	    var index = layer.open({
-	        type: 2,
-	        area: [w+'px', h +'px'],
-	        fix: false, //不固定
-	        maxmin: true,
-	        shadeClose: true,
-	        shade:0.4,
-	        title: title,
-	        content: url
-	    });
+	    var index;
+	    if(param == null || param == '') {
+            index = layer.open({
+                type: 2,
+                area: [w+'px', h +'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                title: title,
+                content: url
+            });
+        } else {
+            index = layer.open({
+                type: 2,
+                area: [w+'px', h +'px'],
+                fix: false, //不固定
+                maxmin: true,
+                shadeClose: true,
+                shade:0.4,
+                title: title,
+                content: url+param
+            });
+        }
 	    if(full){
-	       layer.full(index); 
+	       layer.full(index);
 	    }
 	}
 	/**
@@ -194,7 +208,7 @@
 		});
 	};
 	win.xadmin = new Xadmin();
-	
+
 }(window);
 
 layui.use(['layer','element','jquery'],function() {
@@ -259,7 +273,7 @@ layui.use(['layer','element','jquery'],function() {
                 $(this).siblings().removeClass('open');
             }
         }
-        event.stopPropagation(); 
+        event.stopPropagation();
     })
     var left_tips_index = null;
     $('.left-nav #nav').on('mouseenter', '.left-nav-li', function(event) {
@@ -270,7 +284,7 @@ layui.use(['layer','element','jquery'],function() {
     })
 
     $('.left-nav #nav').on('mouseout', '.left-nav-li', function(event) {
-        layer.close(left_tips_index); 
+        layer.close(left_tips_index);
     })
     // 隐藏左侧
     $('.container .left_open i').click(function(event) {

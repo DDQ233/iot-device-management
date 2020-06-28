@@ -29,7 +29,7 @@ public interface UserDeviceDao {
     List<UserDevice> findUserDevice(UserDevice userDevice);
 
     // 根据设备认证/鉴权信息查询设备
-    UserDevice findUserDeviceByAuth(String auth);
+    UserDevice findUserDeviceByAuth(String id, String auth);
 
     // 用户设备计数
     int countDevice(String id);

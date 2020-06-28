@@ -6,10 +6,7 @@ import app.service.before.UserDeviceService;
 import app.utils.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -31,15 +28,21 @@ public class UserDeviceController {
     @RequestMapping("/list")
     public String toUserCustomPage(Model model, HttpSession httpSession) {
         System.out.println("> To user custom page.");
-        String userId = httpSession.getAttribute("USER_ID").toString();
-        List<UserDevice> userDeviceList = userDeviceService.findAllUserDevice(userId);
-        httpSession.setAttribute("USER_DEVICE_LIST", userDeviceList);
-        model.addAttribute("currentTime", Utils.getCurrentTime());
+        model.addAttribute("USER_NAME", httpSession.getAttribute("USER_ID"));
         return "before/userDeviceAdmin";
     }
 
+    @RequestMapping("/userDeviceList")
+    public String toCatePage(Model model, HttpSession httpSession) {
+        System.out.println("> To user device cate page.");
+        String userId = httpSession.getAttribute("USER_ID").toString();
+        List<UserDevice> userDeviceList = userDeviceService.findAllUserDevice(userId);
+        model.addAttribute("userDeviceList", userDeviceList);
+        return "before/userDeviceList";
+    }
+
     @RequestMapping("/home")
-    public String toIotDeviceAdminPage(Model model, HttpSession httpSession) {
+    public String toHomePage(Model model, HttpSession httpSession) {
         System.out.println("> To home page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         model.addAttribute("currentTime", Utils.getCurrentTime());
@@ -69,11 +72,41 @@ public class UserDeviceController {
         return "forward:/custom/list";
     }
 
-    @RequestMapping("/userDeviceInfo/{deviceAuth}")
-    public String toUserDeviceInfoPage(@PathVariable String deviceAuth, Model model) {
+    // @RequestMapping("/userDeviceInfo")
+    // public String toUserDeviceInfoPage(
+    //         @ModelAttribute("userDevice") UserDevice userDevice,
+    //         Model model,
+    //         HttpSession httpSession) {
+    //     System.out.println("> To user device information page.");
+    //     System.out.println("> Device auth : " + userDevice.getDevice_auth());
+    //     return "before/userDeviceInfo";
+    // }
+
+    @RequestMapping("/userDeviceInfo")
+    public String toUserDeviceInfoPage(String deviceAuth, Model model, HttpSession httpSession) {
         System.out.println("> To user device information page.");
-        UserDevice userDevice = userDeviceService.findUserDeviceByAuth(deviceAuth);
+        System.out.println("> Device auth : " + deviceAuth);
+        String userId = httpSession.getAttribute("USER_ID").toString();
+        System.out.println("> User id : " + userId);
+        UserDevice userDevice = userDeviceService.findUserDeviceByAuth(userId, deviceAuth);
+        System.out.println("> Auth : " + userDevice.getDevice_auth());
+        // System.out.println("> UserDevice : " + userDevice.toString());
+        System.out.println("> UserDevice name : " + userDevice.getDevice().getDevice_name());
+        System.out.println("> UserDevice name : " + userDevice.getProtocol().getProtocol_name());
+        System.out.println("> UserDevice name : " + userDevice.getPriClassify().getPri_classify_name());
         model.addAttribute(userDevice);
+        // return "before/userDeviceInfo";
+        return "before/userDeviceInfo";
+    }
+
+    @RequestMapping("/update/userDevice")
+    public String updateUserDeviceInfo(@ModelAttribute("userDevice") UserDevice userDevice, Model model) {
+        System.out.println("> Update user device");
+        if (userDeviceService.updateUserDevice(userDevice) > 0) {
+            model.addAttribute("msg", "保存成功");
+        } else {
+            model.addAttribute("msg", "保存失败");
+        }
         return "before/userDeviceInfo";
     }
 

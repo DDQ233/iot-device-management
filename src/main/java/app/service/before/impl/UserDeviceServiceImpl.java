@@ -44,8 +44,8 @@ public class UserDeviceServiceImpl implements UserDeviceService {
     }
 
     @Override
-    public UserDevice findUserDeviceByAuth(String auth) {
-        return userDeviceDao.findUserDeviceByAuth(auth);
+    public UserDevice findUserDeviceByAuth(String id, String auth) {
+        return userDeviceDao.findUserDeviceByAuth(id, auth);
     }
 
     @Override

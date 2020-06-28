@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Device</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <link rel="stylesheet" th:href="@{/css/font.css}">
+    <link rel="stylesheet" th:href="@{/css/xadmin.css}">
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/xadmin.js}"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" th:src="@{https://cdn.staticfile.org/html5shiv/r29/html5.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body ">
+                    <blockquote class="layui-elem-quote">设备管理</blockquote>
+                </div>
+                <div class="layui-card-header">
+                    <button class="layui-btn layui-btn-danger" onclick="delAll()">
+                        <i class="layui-icon"></i>批量删除
+                    </button>
+                </div>
+                <div class="layui-card-body ">
+                    <table class="layui-table layui-form">
+                        <thead>
+                        <tr>
+                            <th width="20">
+                                <input type="checkbox" name="" lay-skin="primary">
+                            </th>
+                            <th width="70">设备认证码</th>
+                            <th width="70">设备名</th>
+                            <th width="70">接入协议</th>
+                            <th width="70">类型</th>
+                            <th width="80">状态</th>
+                            <th width="150">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="userDevice:${userDeviceList}">
+                            <td>
+                                <input type="checkbox" name="" lay-skin="primary">
+                            </td>
+                            <td th:text="${userDevice.device_auth}"></td>
+                            <td th:text="${userDevice.device.device_name}"></td>
+                            <td th:text="${userDevice.protocol.protocol_name}"></td>
+                            <td th:text="${userDevice.priClassify.pri_classify_name}"></td>
+                            <td>
+<!--                                <form class="layui-form" lay-filter="checkbox">-->
+                                    <input type="checkbox" name="switch" lay-text="ON|OFF"
+                                           th:checked="${userDevice.device_status}" lay-skin="switch">
+<!--                                </form>-->
+                            </td>
+                            <td class="td-manage">
+                                <a class="layui-btn layui-btn layui-btn-xs"
+                                   th:href="@{/custom/userDeviceInfo(deviceAuth=${userDevice.device_auth})}">
+                                    <i class="layui-icon">&#xe642;</i>查看
+                                </a>
+                                <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                        onclick="member_del(this,'要删除的id')" href="javascript:;"><i class="layui-icon">&#xe640;</i>删除
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+<!--    $(function () {-->
+<!--        $("input[name='switch']").on("change", function() {-->
+<!--            var change = $("input[type='checkoutbox']").is(':checked');-->
+<!--            if(change) {-->
+<!--                console.log("1");-->
+<!--            }else{-->
+<!--                console.log("0");-->
+<!--            }-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->
+
+<!--<script type="text/javascript">-->
+<!--    function checkboxStatus() {-->
+<!--        var obj = document.getElementsByName("switch");-->
+<!--        var flag = true;-->
+<!--        if(obj.checked){-->
+<!--            console.log("1");-->
+<!--        }else{-->
+<!--            console.log("0");-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        form.on('switch(checkbox)', function(obj){
+            console.log(obj.elem);
+            console.log(obj.elem.checked);
+            console.log(obj.elem.value);
+        });
+    });
+
+    //
+    // /*用户-删除*/
+    // function member_del(obj, id) {
+    //     layer.confirm('确认要删除吗？', function (index) {
+    //         //发异步删除数据
+    //         $(obj).parents("tr").remove();
+    //         layer.msg('已删除!', {icon: 1, time: 1000});
+    //     });
+    // }
+    //
+    // // 分类展开收起的分类的逻辑
+    // //
+    // $(function () {
+    //     $("tbody.x-cate tr[fid!='0']").hide();
+    //     // 栏目多级显示效果
+    //     $('.x-show').click(function () {
+    //         if ($(this).attr('status') == 'true') {
+    //             $(this).html('&#xe625;');
+    //             $(this).attr('status', 'false');
+    //             cateId = $(this).parents('tr').attr('cate-id');
+    //             $("tbody tr[fid=" + cateId + "]").show();
+    //         } else {
+    //             cateIds = [];
+    //             $(this).html('&#xe623;');
+    //             $(this).attr('status', 'true');
+    //             cateId = $(this).parents('tr').attr('cate-id');
+    //             getCateId(cateId);
+    //             for (var i in cateIds) {
+    //                 $("tbody tr[cate-id=" + cateIds[i] + "]").hide().find('.x-show').html('&#xe623;').attr('status', 'true');
+    //             }
+    //         }
+    //     })
+    // })
+    //
+    // var cateIds = [];
+    //
+    // function getCateId(cateId) {
+    //     $("tbody tr[fid=" + cateId + "]").each(function (index, el) {
+    //         id = $(el).attr('cate-id');
+    //         cateIds.push(id);
+    //         getCateId(id);
+    //     });
+    // }
+
+</script>
+</body>
+</html>

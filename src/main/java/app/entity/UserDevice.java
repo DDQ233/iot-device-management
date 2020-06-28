@@ -13,9 +13,9 @@ public class UserDevice {
     private String device_addr;
     private String device_api;
     private String device_desc;
-    private String device_name;
-    private String device_protocol_id;
     private Device device;
+    private Protocol protocol;
+    private PriClassify priClassify;
 
     public Device getDevice() {
         return device;
@@ -81,20 +81,20 @@ public class UserDevice {
         this.device_desc = device_desc;
     }
 
-    public String getDevice_name() {
-        return device_name;
+    public Protocol getProtocol() {
+        return protocol;
     }
 
-    public void setDevice_name(String device_name) {
-        this.device_name = device_name;
+    public void setProtocol(Protocol protocol) {
+        this.protocol = protocol;
     }
 
-    public String getDevice_protocol_id() {
-        return device_protocol_id;
+    public PriClassify getPriClassify() {
+        return priClassify;
     }
 
-    public void setDevice_protocol_id(String device_protocol_id) {
-        this.device_protocol_id = device_protocol_id;
+    public void setPriClassify(PriClassify priClassify) {
+        this.priClassify = priClassify;
     }
 
     @Override
@@ -107,9 +107,9 @@ public class UserDevice {
                 ", device_addr='" + device_addr + '\'' +
                 ", device_api='" + device_api + '\'' +
                 ", device_desc='" + device_desc + '\'' +
-                ", device_name='" + device_name + '\'' +
-                ", device_protocol_id='" + device_protocol_id + '\'' +
-                ", device=" + device.toString() +
+                ", device=" + device +
+                ", protocol=" + protocol +
+                ", priClassify=" + priClassify +
                 '}';
     }
 }
