@@ -18,32 +18,32 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             user_id,
             user_pwd,
-            <if test="user_name != null add user_name != ''">
+            <if test="user_name != null and user_name != ''">
                 user_name,
             </if>
-            <if test="user_phone != null add user_phone != ''">
+            <if test="user_phone != null and user_phone != ''">
                 user_phone,
             </if>
-            <if test="user_email != null add user_email != ''">
+            <if test="user_email != null and user_email != ''">
                 user_email,
             </if>
-            <if test="user_location != null add user_location != ''">
+            <if test="user_location != null and user_location != ''">
                 user_location,
             </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             #{user_id},
             #{user_pwd},
-            <if test="user_name != null add user_name != ''">
+            <if test="user_name != null and user_name != ''">
                 #{user_name},
             </if>
-            <if test="user_phone != null add user_phone != ''">
+            <if test="user_phone != null and user_phone != ''">
                 #{admin_phone},
             </if>
-            <if test="user_email != null add user_email != ''">
+            <if test="user_email != null and user_email != ''">
                 #{user_email},
             </if>
-            <if test="user_location != null add user_location != ''">
+            <if test="user_location != null and user_location != ''">
                 #{user_location},
             </if>
         </trim>

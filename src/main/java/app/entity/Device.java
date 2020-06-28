@@ -118,8 +118,8 @@ public class Device {
                 ", device_create_time=" + device_create_time +
                 ", device_desc='" + device_desc + '\'' +
                 ", device_usage=" + device_usage +
-                ", protocol=" + protocol.toString() +
-                ", priClassify=" + priClassify.toString() +
+                ", protocol=" + protocol +
+                ", priClassify=" + priClassify +
                 '}';
     }
 }

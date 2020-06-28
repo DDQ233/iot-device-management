@@ -7,6 +7,7 @@
         <!--<result property="device_id" column="device_id"/>-->
         <result property="device_name" column="device_name"/>
         <result property="device_protocol_id" column="device_protocol_id"/>
+        <result property="device_desc" column="device_desc"/>
     </resultMap>
 
     <resultMap id="protocolList" type="protocol">
@@ -38,20 +39,20 @@
     <!--</resultMap>-->
 
     <!--用户添加设备-->
-    <insert id="addUserDevice" parameterType="UserDevice">
-        insert into tb_device
+    <insert id="addUserDevice" parameterType="userDevice">
+        insert into tb_user_device
         <trim prefix="(" suffix=")" suffixOverrides=",">
             user_id,
             device_id,
             device_status,
             device_auth,
-            <if test="device_addr != null add device_addr != ''">
+            <if test="device_addr != null and device_addr !=''">
                 device_addr,
             </if>
-            <if test="device_api != null add device_api != ''">
+            <if test="device_api != null and device_api !=''">
                 device_api,
             </if>
-            <if test="device_desc != null add device_desc != ''">
+            <if test="device_desc != null and device_desc != ''">
                 device_desc,
             </if>
         </trim>
@@ -60,20 +61,20 @@
             #{device_id},
             #{device_status},
             #{device_auth},
-            <if test="device_addr != null add device_addr != ''">
+            <if test="device_addr != null and device_addr != ''">
                 #{device_addr},
             </if>
-            <if test="device_api != null add device_api != ''">
+            <if test="device_api != null and device_api != ''">
                 #{device_api},
             </if>
-            <if test="device_desc != null add device_desc != ''">
+            <if test="device_desc != null and device_desc != ''">
                 #{device_desc},
             </if>
         </trim>
     </insert>
 
     <!--用户删除设备-->
-    <delete id="deleteDeviceByAuth" parameterType="String">
+    <delete id="deleteUserDeviceByAuth" parameterType="String">
         delete from tb_user_device where device_auth = #{auth}
     </delete>
 
@@ -113,21 +114,21 @@
 
     <select id="findUserDevice" parameterType="UserDevice" resultMap="userDeviceList">
         select ud.*, d.device_name, d.device_protocol_id
-        from tb_user_deviceas ud, tb_device as d
+        from tb_user_device ud, tb_device as d
         <trim prefix="where" prefixOverrides="and">
             and ud.device_id = d.device_id
             and ud.user_id = #{user_id}
             <if test="device_id !=null and device_id != ''">
-                and device_id like concat('%', #{device_id}, '%')
+                and ud.device_id like concat('%', #{device_id}, '%')
             </if>
             <if test="device_status != null and device_status != ''">
-                and device_status like concat('%', #{device_status}, '%')
+                and ud.device_status like concat('%', #{device_status}, '%')
             </if>
             <if test="device_auth !=null and device_auth != ''">
-                and device_auth like concat('%', #{device_auth}, '%')
+                and ud.device_auth like concat('%', #{device_auth}, '%')
             </if>
             <if test="device_addr != null and device_addr != ''">
-                and device_addr like concat('%', #{device_addr}, '%')
+                and ud.device_addr like concat('%', #{device_addr}, '%')
             </if>
         </trim>
     </select>

@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/sise/app/DaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/addUserDevice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/order-list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Protocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/xadmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/xadmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceAdmin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userLogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userInfo.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +48,13 @@
         <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="iot-device: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="iot-device: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="tb_device: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -105,17 +110,17 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/admin" />
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/before" />
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/common" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates/before" />
       <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
       <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
       <recent name="$PROJECT_DIR$/src/main/resources/static.lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/admin" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/before" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/common" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -172,9 +177,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.IotDeviceManagementApplication" />
       <item itemvalue="JUnit.UtilsTest.getCurrentTimeTest" />
       <item itemvalue="JUnit.DaoTest.findAllUserDeviceTest" />
+      <item itemvalue="Spring Boot.IotDeviceManagementApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -201,6 +206,8 @@
       <workItem from="1593089855131" duration="1024000" />
       <workItem from="1593090977147" duration="31509000" />
       <workItem from="1593241028629" duration="74991000" />
+      <workItem from="1593344743867" duration="15233000" />
+      <workItem from="1593362288260" duration="1248000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>

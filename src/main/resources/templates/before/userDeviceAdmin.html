@@ -20,7 +20,7 @@
     <![endif]-->
     <script>
         // 是否开启刷新记忆tab功能
-        var is_remember = false;
+        var is_remember = true;
     </script>
 </head>
 <body class="index">
@@ -59,9 +59,9 @@
             <a href="javascript:;">个人中心</a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
-                <dd><a th:onclick="|xadmin.open('个人信息','/user/update/userInfo')|">修改个人信息</a></dd>
+                <dd><a th:onclick="|xadmin.open('个人信息','/user/userInfo',null,600,600)|">修改个人信息</a></dd>
                 <!--                <dd><a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>-->
-                <dd><a th:onclick="|xadmin.open('个人信息','/user/passwordModify')|">修改密码</a></dd>
+                <dd><a th:onclick="|xadmin.open('个人信息','/user/passwordModify',null,600,600)|">修改密码</a></dd>
                 <dd><a th:href="@{/user/logout}">退出登录</a></dd>
             </dl>
         </li>
@@ -337,7 +337,9 @@
     <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
         <ul class="layui-tab-title">
             <li class="home">
-                <i class="layui-icon">&#xe68e;</i>我的桌面
+                <a th:href="@{@{/custom/list}}">
+                    <i class="layui-icon">&#xe68e;</i>我的桌面
+                </a>
             </li>
         </ul>
         <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">

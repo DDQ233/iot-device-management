@@ -1,6 +1,8 @@
 package app.controller.before;
 
+import app.entity.Device;
 import app.entity.UserDevice;
+import app.service.admin.DeviceService;
 import app.service.before.DataService;
 import app.service.before.UserDeviceService;
 import app.utils.Utils;
@@ -24,6 +26,8 @@ public class UserDeviceController {
     private DataService dataService;
     @Resource(name = "userDeviceService")
     private UserDeviceService userDeviceService;
+    @Resource(name = "deviceService")
+    private DeviceService deviceService;
 
     @RequestMapping("/list")
     public String toUserCustomPage(Model model, HttpSession httpSession) {
@@ -33,8 +37,8 @@ public class UserDeviceController {
     }
 
     @RequestMapping("/userDeviceList")
-    public String toCatePage(Model model, HttpSession httpSession) {
-        System.out.println("> To user device cate page.");
+    public String toUserDeviceListPage(Model model, HttpSession httpSession) {
+        System.out.println("> To user device list page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         List<UserDevice> userDeviceList = userDeviceService.findAllUserDevice(userId);
         model.addAttribute("userDeviceList", userDeviceList);
@@ -53,34 +57,44 @@ public class UserDeviceController {
     }
 
     @RequestMapping("/addDevice")
-    public String toAddDevicePage() {
+    public String toAddDevicePage(@ModelAttribute("userDevice") UserDevice userDevice, HttpSession httpSession, Model model) {
         System.out.println("> To add user device page.");
+        // String userId = httpSession.getAttribute("USER_ID").toString();
+        // userDevice.setUser_id(userId);
+        List<Device> deviceList = deviceService.findAllDevice();
+        for (Device device : deviceList) {
+            System.out.println(device.toString());
+        }
+        model.addAttribute("userDevice", userDevice);
+        model.addAttribute("deviceList", deviceList);
         return "before/addUserDevice";
     }
 
     @RequestMapping("/add")
-    public String addUserDevice(@ModelAttribute("userDevice") UserDevice userDevice) {
+    public String addUserDevice(@ModelAttribute("userDevice") UserDevice userDevice, Model model, HttpSession httpSession) {
         System.out.println("> Add user device.");
-        userDeviceService.addUserDevice(userDevice);
-        return "forward:/custom/list";
+        String userId = httpSession.getAttribute("USER_ID").toString();
+        String deviceAuth = userDevice.getDevice_auth();
+        userDevice.setUser_id(userId);
+        userDevice.setDevice_status("OFF");
+        if (userDeviceService.findUserDeviceByAuth(userId, deviceAuth) == null) {
+            if (userDeviceService.addUserDevice(userDevice) > 0) {
+                model.addAttribute("msg", "添加成功");
+            } else {
+                model.addAttribute("msg", "添加失败");
+            }
+        } else {
+            model.addAttribute("msg", "已有相同的设备认证码");
+        }
+        return "before/addUserDevice";
     }
 
-    @RequestMapping("/delete/{userDeviceAuth}")
-    public String deleteUserDeviceById(@PathVariable String userDeviceAuth, HttpSession httpSession) {
+    @RequestMapping("/delete")
+    public String deleteUserDeviceById(String deviceAuth, HttpSession httpSession) {
         System.out.println("> Delete user device.");
-        userDeviceService.deleteUserDeviceByAuth(userDeviceAuth);
-        return "forward:/custom/list";
+        userDeviceService.deleteUserDeviceByAuth(deviceAuth);
+        return "forward:/custom/userDeviceList";
     }
-
-    // @RequestMapping("/userDeviceInfo")
-    // public String toUserDeviceInfoPage(
-    //         @ModelAttribute("userDevice") UserDevice userDevice,
-    //         Model model,
-    //         HttpSession httpSession) {
-    //     System.out.println("> To user device information page.");
-    //     System.out.println("> Device auth : " + userDevice.getDevice_auth());
-    //     return "before/userDeviceInfo";
-    // }
 
     @RequestMapping("/userDeviceInfo")
     public String toUserDeviceInfoPage(String deviceAuth, Model model, HttpSession httpSession) {

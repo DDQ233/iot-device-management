@@ -28,8 +28,16 @@
                     <blockquote class="layui-elem-quote">设备管理</blockquote>
                 </div>
                 <div class="layui-card-header">
+                    <a class="layui-btn layui-btn-warm" th:href="@{/custom/userDeviceList}">
+                        <i class="layui-icon">&#xe617;</i>刷新一下
+                    </a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <button class="layui-btn layui-btn-danger" onclick="delAll()">
                         <i class="layui-icon"></i>批量删除
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="layui-btn" th:onclick="|xadmin.open('添加用户','/custom/addDevice')|">
+                        <i class="layui-icon">&#xe61f;</i>添加
                     </button>
                 </div>
                 <div class="layui-card-body ">
@@ -57,19 +65,21 @@
                             <td th:text="${userDevice.protocol.protocol_name}"></td>
                             <td th:text="${userDevice.priClassify.pri_classify_name}"></td>
                             <td>
-<!--                                <form class="layui-form" lay-filter="checkbox">-->
-                                    <input type="checkbox" name="switch" lay-text="ON|OFF"
-                                           th:checked="${userDevice.device_status}" lay-skin="switch">
-<!--                                </form>-->
+                                <input type="checkbox" name="switch" lay-text="ON|OFF"
+                                       th:checked="${userDevice.device_status}" lay-skin="switch">
                             </td>
                             <td class="td-manage">
                                 <a class="layui-btn layui-btn layui-btn-xs"
                                    th:href="@{/custom/userDeviceInfo(deviceAuth=${userDevice.device_auth})}">
                                     <i class="layui-icon">&#xe642;</i>查看
                                 </a>
-                                <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                        onclick="member_del(this,'要删除的id')" href="javascript:;"><i class="layui-icon">&#xe640;</i>删除
-                                </button>
+                                <a class="layui-btn layui-btn layui-btn-xs"
+                                   th:href="@{/custom/delete(deviceAuth=${userDevice.device_auth})}">
+                                    <i class="layui-icon"></i>删除
+                                </a>
+<!--                                <button class="layui-btn-danger layui-btn layui-btn-xs"-->
+<!--                                        onclick="member_del(this,'要删除的id')" href="javascript:;"><i class="layui-icon">&#xe640;</i>删除-->
+<!--                                </button>-->
                             </td>
                         </tr>
                         </tbody>
@@ -107,22 +117,24 @@
 <script>
     layui.use('form', function () {
         var form = layui.form;
-        form.on('switch(checkbox)', function(obj){
+        form.on('switch(checkbox)', function (obj) {
             console.log(obj.elem);
             console.log(obj.elem.checked);
             console.log(obj.elem.value);
         });
     });
 
-    //
-    // /*用户-删除*/
-    // function member_del(obj, id) {
-    //     layer.confirm('确认要删除吗？', function (index) {
-    //         //发异步删除数据
-    //         $(obj).parents("tr").remove();
-    //         layer.msg('已删除!', {icon: 1, time: 1000});
-    //     });
-    // }
+
+    /*用户-删除*/
+    function member_del(obj, id) {
+        layer.confirm('确认要删除吗？', function (index) {
+
+            //发异步删除数据
+            $(obj).parents("tr").remove();
+            layer.msg('已删除!', {icon: 1, time: 1000});
+        });
+    }
+
     //
     // // 分类展开收起的分类的逻辑
     // //

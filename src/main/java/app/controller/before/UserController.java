@@ -88,20 +88,30 @@ public class UserController {
         return "redirect:/user/toLogin";
     }
 
-    @RequestMapping("/update/userInfo")
-    public String toAdminInfoPage(HttpSession httpSession) {
+    @RequestMapping("/userInfo")
+    public String toAdminInfoPage(Model model, HttpSession httpSession) {
         System.out.println("> To user information page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         httpSession.setAttribute("USER_INFO", userService.findUserById(userId));
+        User user = userService.findUserById(userId);
+        System.out.println(user.toString());
+        model.addAttribute(user);
         return "before/userInfo";
     }
 
-    @RequestMapping("/update/user")
-    public String updateUserInfo(@ModelAttribute("user") User user, HttpSession httpSession) {
+    @RequestMapping("/update")
+    public String updateUserInfo(@ModelAttribute("user") User user, Model model, HttpSession httpSession) {
         System.out.println("> Update user.");
-        userService.updateUser(user);
+        String userId = httpSession.getAttribute("USER_ID").toString();
+        user.setUser_id(userId);
+        System.out.println(user.toString());
+        if(userService.updateUser(user) > 0){
+            model.addAttribute("msg", "保存成功");
+        } else {
+            model.addAttribute("msg", "保存失败");
+        }
         httpSession.removeAttribute("USER_INFO");
-        return "forward:/user/userInfo";
+        return "before/userInfo";
     }
 
     @RequestMapping("/passwordModify")

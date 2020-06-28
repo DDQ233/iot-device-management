@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="app.dao.DeviceDao">
+<mapper namespace="app.dao.admin.DeviceDao">
 
     <resultMap id="protocolList" type="protocol">
         <!--<result property="device_protocol_id" column="device_protocol_id"/>-->
@@ -118,7 +118,7 @@
         select dev.*, pro.*, pri.*
         from tb_device as dev, tb_protocol as pro, tb_pri_classify as pri
         where dev.device_protocol_id = pro.device_protocol_id
-        and dev.device_pri_classfy_id = pri.pri_classify_id
+        and dev.device_pri_classify_id = pri.pri_classify_id
     </select>
 
     <!--查询设备信息-->
@@ -127,7 +127,7 @@
         from tb_device as dev, tb_protocol as pro, tb_pri_classify as pri
         <trim prefix="where" prefixOverrides="and">
             and dev.device_protocol_id = pro.device_protocol_id
-            and dev.device_pri_classfy_id = pri.pri_classify_id
+            and dev.device_pri_classify_id = pri.pri_classify_id
             <if test="device_id !=null and device_id != ''">
                 and device_id like concat('%', #{device_id}, '%')
             </if>
