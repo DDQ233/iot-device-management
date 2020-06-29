@@ -20,30 +20,6 @@ public class Device {
     private PriClassify priClassify;
     // private SecClassify secClassify;
 
-    public Protocol getProtocol() {
-        return protocol;
-    }
-
-    public void setProtocol(Protocol protocol) {
-        this.protocol = protocol;
-    }
-
-    public PriClassify getPriClassify() {
-        return priClassify;
-    }
-
-    public void setPriClassify(PriClassify priClassify) {
-        this.priClassify = priClassify;
-    }
-
-    // public SecClassify getSecClassify() {
-    //     return secClassify;
-    // }
-    //
-    // public void setSecClassify(SecClassify secClassify) {
-    //     this.secClassify = secClassify;
-    // }
-
     public String getDevice_id() {
         return device_id;
     }
@@ -76,14 +52,6 @@ public class Device {
         this.device_pri_classify_id = device_pri_classify_id;
     }
 
-    // public String getDevice_sec_classify_id() {
-    //     return device_sec_classify_id;
-    // }
-    //
-    // public void setDevice_sec_classify_id(String device_sec_classify_id) {
-    //     this.device_sec_classify_id = device_sec_classify_id;
-    // }
-
     public Date getDevice_create_time() {
         return device_create_time;
     }
@@ -108,6 +76,22 @@ public class Device {
         this.device_usage = device_usage;
     }
 
+    public Protocol getProtocol() {
+        return protocol;
+    }
+
+    public void setProtocol(Protocol protocol) {
+        this.protocol = protocol;
+    }
+
+    public PriClassify getPriClassify() {
+        return priClassify;
+    }
+
+    public void setPriClassify(PriClassify priClassify) {
+        this.priClassify = priClassify;
+    }
+
     @Override
     public String toString() {
         return "Device{" +
@@ -117,7 +101,7 @@ public class Device {
                 ", device_pri_classify_id='" + device_pri_classify_id + '\'' +
                 ", device_create_time=" + device_create_time +
                 ", device_desc='" + device_desc + '\'' +
-                ", device_usage=" + device_usage +
+                ", device_usage='" + device_usage + '\'' +
                 ", protocol=" + protocol +
                 ", priClassify=" + priClassify +
                 '}';

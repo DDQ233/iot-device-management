@@ -32,22 +32,23 @@ public class UserDeviceController {
     @RequestMapping("/list")
     public String toUserCustomPage(Model model, HttpSession httpSession) {
         System.out.println("> To user custom page.");
-        model.addAttribute("USER_NAME", httpSession.getAttribute("USER_ID"));
+        model.addAttribute("userName", httpSession.getAttribute("USER_Name"));
         return "before/userDeviceAdmin";
     }
 
     @RequestMapping("/userDeviceList")
-    public String toUserDeviceListPage(Model model, HttpSession httpSession) {
+    public String toUserDeviceListPage(@ModelAttribute("userDevice") UserDevice userDevice, Model model, HttpSession httpSession) {
         System.out.println("> To user device list page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         List<UserDevice> userDeviceList = userDeviceService.findAllUserDevice(userId);
+        model.addAttribute("userDevice", userDevice);
         model.addAttribute("userDeviceList", userDeviceList);
         return "before/userDeviceList";
     }
 
     @RequestMapping("/home")
     public String toHomePage(Model model, HttpSession httpSession) {
-        System.out.println("> To home page.");
+        System.out.println("> To user home page.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         model.addAttribute("currentTime", Utils.getCurrentTime());
         model.addAttribute("deviceNum", userDeviceService.countDevice(userId));
@@ -77,16 +78,28 @@ public class UserDeviceController {
         String deviceAuth = userDevice.getDevice_auth();
         userDevice.setUser_id(userId);
         userDevice.setDevice_status("OFF");
-        if (userDeviceService.findUserDeviceByAuth(userId, deviceAuth) == null) {
-            if (userDeviceService.addUserDevice(userDevice) > 0) {
-                model.addAttribute("msg", "添加成功");
-            } else {
-                model.addAttribute("msg", "添加失败");
-            }
+        if (deviceService.findDeviceById(userDevice.getDevice_id()) == null) {
+            model.addAttribute("msg", "没有此设备");
         } else {
-            model.addAttribute("msg", "已有相同的设备认证码");
+            if (userDeviceService.findUserDeviceByAuth(userId, deviceAuth) == null) {
+                if (userDeviceService.addUserDevice(userDevice) > 0) {
+                    model.addAttribute("msg", "添加成功");
+                } else {
+                    model.addAttribute("msg", "添加失败");
+                }
+            } else {
+                model.addAttribute("msg", "添加失败已有相同的设备认证码");
+            }
         }
         return "before/addUserDevice";
+    }
+
+    @RequestMapping("/deleteAll")
+    public String deleteAllUserDevice(HttpSession httpSession) {
+        System.out.println("> Delete all user device.");
+        String userId = httpSession.getAttribute("USER_ID").toString();
+        userDeviceService.deleteAllUserDevice(userId);
+        return "forward:/custom/userDeviceList";
     }
 
     @RequestMapping("/delete")
@@ -125,31 +138,20 @@ public class UserDeviceController {
     }
 
     @RequestMapping("/searchUserDevice")
-    public String toSearchUserDevicePage(HttpSession httpSession) {
+    public String toSearchUserDevicePage(@ModelAttribute("userDevice") UserDevice userDevice, Model model, HttpSession httpSession) {
         System.out.println("> To search user device page.");
-        httpSession.removeAttribute("SEARCH_USER_DEVICE_LIST");
-        return "before/searchUserDevice";
+        model.addAttribute("userDevice", userDevice);
+        return "before/userSearchList";
     }
 
     @RequestMapping("/search")
-    public String searchUserDevice(
-            @RequestParam String deviceId,
-            @RequestParam String deviceStatus,
-            @RequestParam String deviceAuth,
-            @RequestParam String addr,
-            HttpSession httpSession
-    ) {
+    public String searchUserDevice(@ModelAttribute("userDevice") UserDevice userDevice, Model model, HttpSession httpSession) {
         System.out.println("> Search user device.");
         String userId = httpSession.getAttribute("USER_ID").toString();
-        UserDevice userDevice = new UserDevice();
         userDevice.setUser_id(userId);
-        userDevice.setDevice_id(deviceId);
-        userDevice.setDevice_status(deviceStatus);
-        userDevice.setDevice_auth(deviceAuth);
-        userDevice.setDevice_addr(addr);
         List<UserDevice> userDeviceList = userDeviceService.findUserDevice(userDevice);
-        httpSession.removeAttribute("SEARCH_USER_DEVICE_LIST");
-        httpSession.setAttribute("SEARCH_USER_DEVICE_LIST", userDeviceList);
-        return "before/searchUserDevice";
+        model.addAttribute("userDeviceList", userDeviceList);
+        model.addAttribute("userDevice", userDevice);
+        return "before/userSearchList";
     }
 }

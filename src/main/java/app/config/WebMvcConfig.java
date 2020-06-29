@@ -37,6 +37,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 "/common/**"
         };
         String[] adminExclude = new String[]{
+                "/",
                 "/admin",
                 "/admin/login",
                 "/admin/toLogin",
@@ -52,6 +53,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(adminVisitInterceptor)
                 .addPathPatterns("/admin/**")
+                .addPathPatterns("/device/**")
                 .excludePathPatterns(staticExclude)
                 .excludePathPatterns(adminExclude);
         registry.addInterceptor(userVisitInterceptor)

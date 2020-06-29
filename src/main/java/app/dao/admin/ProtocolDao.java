@@ -30,4 +30,7 @@ public interface ProtocolDao {
 
     // 根据 ID 查询设备接入协议
     Protocol findProtocolById(String id);
+
+    // 协议计数
+    int count();
 }

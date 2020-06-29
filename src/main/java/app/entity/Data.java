@@ -12,6 +12,7 @@ public class Data {
     private String device_id;
     private String data;
     private Date datetime;
+    private UserDevice userDevice;
 
     public String getUser_id() {
         return user_id;
@@ -45,6 +46,14 @@ public class Data {
         this.datetime = datetime;
     }
 
+    public UserDevice getUserDevice() {
+        return userDevice;
+    }
+
+    public void setUserDevice(UserDevice userDevice) {
+        this.userDevice = userDevice;
+    }
+
     @Override
     public String toString() {
         return "Data{" +
@@ -52,6 +61,7 @@ public class Data {
                 ", device_id='" + device_id + '\'' +
                 ", data='" + data + '\'' +
                 ", datetime=" + datetime +
+                ", userDevice=" + userDevice +
                 '}';
     }
 }

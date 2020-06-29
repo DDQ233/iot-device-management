@@ -73,6 +73,10 @@
         </trim>
     </insert>
 
+    <delete id="deleteAllUserDevice" parameterType="String">
+        delete from tb_user_device where user_id = #{id}
+    </delete>
+
     <!--用户删除设备-->
     <delete id="deleteUserDeviceByAuth" parameterType="String">
         delete from tb_user_device where device_auth = #{auth}
@@ -113,10 +117,11 @@
     </select>
 
     <select id="findUserDevice" parameterType="UserDevice" resultMap="userDeviceList">
-        select ud.*, d.device_name, d.device_protocol_id
-        from tb_user_device ud, tb_device as d
+        select ud.*, d.device_name, d.device_protocol_id, pro.protocol_name, pri.pri_classify_name
+        from tb_user_device as ud, tb_device as d, tb_protocol as pro, tb_pri_classify as pri
         <trim prefix="where" prefixOverrides="and">
             and ud.device_id = d.device_id
+            and d.device_protocol_id = pro.device_protocol_id
             and ud.user_id = #{user_id}
             <if test="device_id !=null and device_id != ''">
                 and ud.device_id like concat('%', #{device_id}, '%')
@@ -129,6 +134,12 @@
             </if>
             <if test="device_addr != null and device_addr != ''">
                 and ud.device_addr like concat('%', #{device_addr}, '%')
+            </if>
+            <if test="device.device_name != null and device.device_name != ''">
+                and d.device_name like concat('%', #{device.device_name}, '%')
+            </if>
+            <if test="protocol.protocol_name != null and protocol.protocol_name != ''">
+                and pro.protocol_name like concat('%', #{protocol.protocol_name}, '%')
             </if>
         </trim>
     </select>

@@ -30,4 +30,7 @@ public interface DeviceDao {
 
     // 根据 ID 查询设备信息
     Device findDeviceById(String id);
+
+    // 设备计数
+    int count();
 }

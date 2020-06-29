@@ -5,8 +5,8 @@
 
     <resultMap id="protocolList" type="protocol">
         <!--<result property="device_protocol_id" column="device_protocol_id"/>-->
-        <result property="device_protocol_name" column="device_protocol_name"/>
-        <result property="device_protocol_desc" column="device_protocol_desc"/>
+        <result property="protocol_name" column="protocol_name"/>
+        <result property="protocol_desc" column="protocol_desc"/>
     </resultMap>
 
     <resultMap id="priClassifyList" type="PriClassify">
@@ -40,43 +40,43 @@
         insert into tb_device
         <trim prefix="(" suffix=")" suffixOverrides=",">
             device_id,
-            <if test="device_name != null add device_name != ''">
+            <if test="device_name != null and device_name != ''">
                 device_name,
             </if>
-            <if test="device_protocol_id != null add device_protocol_id != ''">
+            <if test="device_protocol_id != null and device_protocol_id != ''">
                 device_protocol_id,
             </if>
-            <if test="device_pri_classify_id != null add device_pri_classify_id != ''">
+            <if test="device_pri_classify_id != null and device_pri_classify_id != ''">
                 device_pri_classify_id,
             </if>
-            <if test="device_create_time != null add device_create_time != ''">
+            <if test="device_create_time != null and device_create_time != ''">
                 device_create_time,
             </if>
-            <if test="device_desc != null add device_desc != ''">
+            <if test="device_desc != null and device_desc != ''">
                 device_desc,
             </if>
-            <if test="device_usage != null add device_usage != ''">
+            <if test="device_usage != null and device_usage != ''">
                 device_usage,
             </if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             #{device_id},
-            <if test="device_name != null add device_name != ''">
+            <if test="device_name != null and device_name != ''">
                 #{device_name},
             </if>
-            <if test="device_protocol_id != null add device_protocol_id != ''">
+            <if test="device_protocol_id != null and device_protocol_id != ''">
                 #{device_protocol_id},
             </if>
-            <if test="device_pri_classify_id != null add device_pri_classify_id != ''">
+            <if test="device_pri_classify_id != null and device_pri_classify_id != ''">
                 #{device_pri_classify_id},
             </if>
-            <if test="device_create_time != null add device_create_time != ''">
+            <if test="device_create_time != null and device_create_time != ''">
                 #{device_create_time},
             </if>
-            <if test="device_desc != null add device_desc != ''">
+            <if test="device_desc != null and device_desc != ''">
                 #{device_desc},
             </if>
-            <if test="device_usage != null add device_usage != ''">
+            <if test="device_usage != null and device_usage != ''">
                 #{device_usage},
             </if>
         </trim>
@@ -153,8 +153,18 @@
     </select>
 
     <!--根据 ID 查询设备信息-->
-    <select id="findDeviceById" parameterType="String" resultType="device">
-        select* from tb_device where admin_id = #{id} limit 1
+    <select id="findDeviceById" parameterType="String" resultMap="deviceList">
+        select dev.*, pro.*, pri.*
+        from tb_device as dev, tb_protocol as pro, tb_pri_classify as pri
+        where dev.device_protocol_id = pro.device_protocol_id
+        and dev.device_pri_classify_id = pri.pri_classify_id
+        and dev.device_id = #{id}
+        limit 1
+    </select>
+
+<!--设备计数-->
+    <select id="count" parameterType="String" resultType="Integer">
+        select count(1) from tb_device;
     </select>
 
 </mapper>

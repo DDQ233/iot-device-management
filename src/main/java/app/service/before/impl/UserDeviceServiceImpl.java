@@ -24,6 +24,11 @@ public class UserDeviceServiceImpl implements UserDeviceService {
     }
 
     @Override
+    public int deleteAllUserDevice(String id) {
+        return userDeviceDao.deleteAllUserDevice(id);
+    }
+
+    @Override
     public int deleteUserDeviceByAuth(String auth) {
         return userDeviceDao.deleteUserDeviceByAuth(auth);
     }

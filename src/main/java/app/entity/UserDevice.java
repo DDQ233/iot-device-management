@@ -17,14 +17,6 @@ public class UserDevice {
     private Protocol protocol;
     private PriClassify priClassify;
 
-    public Device getDevice() {
-        return device;
-    }
-
-    public void setDevice(Device device) {
-        this.device = device;
-    }
-
     public String getUser_id() {
         return user_id;
     }
@@ -79,6 +71,14 @@ public class UserDevice {
 
     public void setDevice_desc(String device_desc) {
         this.device_desc = device_desc;
+    }
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public void setDevice(Device device) {
+        this.device = device;
     }
 
     public Protocol getProtocol() {

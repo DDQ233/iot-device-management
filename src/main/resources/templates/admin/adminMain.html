@@ -27,7 +27,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a th:href="@{/custom/list}">Iot Device</a></div>
+        <a th:href="@{/device/list}">Iot Device</a></div>
     <div class="left_open">
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
@@ -59,10 +59,10 @@
             <a href="javascript:;">个人中心</a>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
-                <dd><a th:onclick="|xadmin.open('个人信息','/user/userInfo',null,600,600)|">修改个人信息</a></dd>
+                <dd><a th:onclick="|xadmin.open('个人信息','/admin/adminInfo',null,600,600)|">修改个人信息</a></dd>
                 <!--                <dd><a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>-->
-                <dd><a th:onclick="|xadmin.open('个人信息','/user/passwordModify',null,600,600)|">修改密码</a></dd>
-                <dd><a th:href="@{/user/logout}">退出登录</a></dd>
+                <dd><a th:onclick="|xadmin.open('个人信息','/admin/passwordModify',null,600,600)|">修改密码</a></dd>
+                <dd><a th:href="@{/admin/logout}">退出登录</a></dd>
             </dl>
         </li>
         <!--        <li class="layui-nav-item to-index">-->
@@ -78,21 +78,22 @@
         <ul id="nav">
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="设备管理">&#xe723;</i>
+                    <i class="iconfont left-nav-li" lay-tips="设备管理">&#xe6b8;</i>
                     <cite>设备管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('设备列表','/custom/userDeviceList')">
+                        <a onclick="xadmin.add_tab('设备列表','/device/deviceList')">
                             <i class="iconfont">&#xe697;</i>
                             <cite>设备列表</cite>
                         </a>
                     </li>
                 </ul>
             </li>
+
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="数据展示">&#xe6b8;</i>
+                    <i class="iconfont left-nav-li" lay-tips="数据展示">&#xe723;</i>
                     <cite>数据展示</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
@@ -104,6 +105,7 @@
                     </li>
                 </ul>
             </li>
+
             <!--            <li>-->
             <!--                <a href="javascript:;">-->
             <!--                    <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>-->
@@ -318,7 +320,7 @@
     <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
         <ul class="layui-tab-title">
             <li class="home">
-                <a th:href="@{/custom/list}">
+                <a th:href="@{/admin/list}">
                     <i class="layui-icon">&#xe68e;</i>主页
                 </a>
             </li>
@@ -332,7 +334,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe th:src="@{/custom/home}" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe th:src="@{/admin/home}" frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>

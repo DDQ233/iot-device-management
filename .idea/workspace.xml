@@ -2,15 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/addUserDevice.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/order-list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/entity/Password.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProtocolMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/addDevice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/adminInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/adminMain.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/adminPasswordInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/deviceAdmin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/deviceInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/deviceList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/dataDisplay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userPasswordInfo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userSearchList.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/DeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/DataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/DeviceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/ProtocolDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/ProtocolDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/DeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/ProtocolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/ProtocolService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/DeviceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/ProtocolServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/ProtocolServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/order-list.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceAdmin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" afterDir="false" />
@@ -37,24 +64,6 @@
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="iot-device: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="iot-device@111.229.163.109" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="iot-device: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="tb_device: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -97,7 +106,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/before" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/mapper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -110,17 +119,17 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/templates/before" />
-      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
-      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
-      <recent name="$PROJECT_DIR$/src/main/resources/static.lib" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates/admin" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/before" />
       <recent name="$PROJECT_DIR$/src/main/resources/templates/common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Workspace\IDEAJWorkspace\iot-device-management\src\main\resources\mapper" />
+      <recent name="D:\Workspace\IDEAJWorkspace\iot-device-management\src\main\resources\templates\admin" />
+      <recent name="D:\Workspace\IDEAJWorkspace\iot-device-management\src\main\resources\templates\before" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/before" />
+      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
     </key>
   </component>
   <component name="RunDashboard">

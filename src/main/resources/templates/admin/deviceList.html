@@ -33,13 +33,14 @@
                     <label class="layui-form-label">搜索</label>
                 </div>
                 <div class="layui-card-body ">
-                    <form th:action="@{/custom/search}" th:object="${userDevice}" class="layui-form">
+<!--                    <form th:action="@{/device/add}" th:object="${device}" class="layui-form">-->
+                    <form action="#" th:object="${device}" class="layui-form">
                         <div class="layui-input-inline layui-show-xs-block">
-                            <input th:field="*{device_auth}" type="text" placeholder="设备认证码" autocomplete="off"
+                            <input th:field="*{device_id}" type="text" placeholder="设备ID" autocomplete="off"
                                    class="layui-input">
                         </div>
                         <div class="layui-input-inline layui-show-xs-block">
-                            <input th:field="*{device.device_name}" type="text" placeholder="设备名" autocomplete="off"
+                            <input th:field="*{device_name}" type="text" placeholder="设备名" autocomplete="off"
                                    class="layui-input">
                         </div>
                         <div class="layui-input-inline layui-show-xs-block">
@@ -55,15 +56,15 @@
             </div>
             <div class="layui-card">
                 <div class="layui-card-header">
-                    <a class="layui-btn layui-btn-warm" th:href="@{/custom/userDeviceList}">
+                    <a class="layui-btn layui-btn-warm" th:href="@{/device/deviceList}">
                         <i class="layui-icon">&#xe617;</i>刷新一下
                     </a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="layui-btn layui-btn-normal" th:href="@{/custom/deleteAll}">
-                        <i class="layui-icon">&#xe617;</i>全部删除
-                    </a>
+<!--                    <a class="layui-btn layui-btn-normal" th:href="@{/device/deleteAll}">-->
+<!--                        <i class="layui-icon">&#xe617;</i>全部删除-->
+<!--                    </a>-->
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <button class="layui-btn" th:onclick="|xadmin.open('添加用户','/custom/addDevice')|">
+                    <button class="layui-btn" th:onclick="|xadmin.open('添加设备','/device/addDevice')|">
                         <i class="layui-icon">&#xe61f;</i>添加
                     </button>
                 </div>
@@ -74,34 +75,31 @@
                             <th width="20">
                                 <input type="checkbox" name="" lay-skin="primary">
                             </th>
-                            <th width="70">设备认证码</th>
+                            <th width="70">设备ID</th>
                             <th width="70">设备名</th>
                             <th width="70">接入协议</th>
                             <th width="70">类型</th>
-                            <th width="80">状态</th>
+                            <th width="80">描述</th>
                             <th width="150">操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="userDevice:${userDeviceList}">
+                        <tr th:each="device:${deviceList}">
                             <td>
                                 <input type="checkbox" name="" lay-skin="primary">
                             </td>
-                            <td th:text="${userDevice.device_auth}"></td>
-                            <td th:text="${userDevice.device.device_name}"></td>
-                            <td th:text="${userDevice.protocol.protocol_name}"></td>
-                            <td th:text="${userDevice.priClassify.pri_classify_name}"></td>
-                            <td>
-                                <input type="checkbox" name="switch" lay-text="ON|OFF"
-                                       th:checked="${userDevice.device_status}" lay-skin="switch">
-                            </td>
+                            <td th:text="${device.device_id}"></td>
+                            <td th:text="${device.device_name}"></td>
+                            <td th:text="${device.protocol.protocol_name}"></td>
+                            <td th:text="${device.priClassify.pri_classify_name}"></td>
+                            <td th:text="${device.device_desc}"></td>
                             <td class="td-manage">
                                 <a class="layui-btn layui-btn layui-btn-xs"
-                                   th:href="@{/custom/userDeviceInfo(deviceAuth=${userDevice.device_auth})}">
+                                   th:href="@{/device/deviceInfo(deviceId=${device.device_id})}">
                                     <i class="layui-icon">&#xe642;</i>查看
                                 </a>
                                 <a class="layui-btn layui-btn layui-btn-xs"
-                                   th:href="@{/custom/delete(deviceAuth=${userDevice.device_auth})}">
+                                   th:href="@{/device/delete(deviceId=${device.device_id})}">
                                     <i class="layui-icon"></i>删除
                                 </a>
                                 <!--                                <button class="layui-btn-danger layui-btn layui-btn-xs"-->

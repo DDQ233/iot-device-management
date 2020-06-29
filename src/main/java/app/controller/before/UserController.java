@@ -1,5 +1,6 @@
 package app.controller.before;
 
+import app.entity.Password;
 import app.entity.User;
 import app.service.before.UserService;
 import org.springframework.stereotype.Controller;
@@ -99,13 +100,13 @@ public class UserController {
         return "before/userInfo";
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/update/info")
     public String updateUserInfo(@ModelAttribute("user") User user, Model model, HttpSession httpSession) {
         System.out.println("> Update user.");
         String userId = httpSession.getAttribute("USER_ID").toString();
         user.setUser_id(userId);
         System.out.println(user.toString());
-        if(userService.updateUser(user) > 0){
+        if (userService.updateUser(user) > 0) {
             model.addAttribute("msg", "保存成功");
         } else {
             model.addAttribute("msg", "保存失败");
@@ -115,29 +116,45 @@ public class UserController {
     }
 
     @RequestMapping("/passwordModify")
-    public String toUpdateUserPasswordPage(HttpSession httpSession) {
+    public String toUpdateUserPasswordPage(Model model, HttpSession httpSession) {
         System.out.println("> To update user password page.");
-        return "before/updateUserPassword";
+        model.addAttribute("password", new Password());
+        return "before/userPasswordInfo";
     }
 
     @RequestMapping("/update/password")
     public String updatePassword(
-            @RequestParam String oldPassword,
-            @RequestParam String newPassword,
+            @ModelAttribute("password") Password password,
             Model model,
             HttpSession httpSession) {
         System.out.println("> Update user password.");
-        User user = new User();
-        String userId = httpSession.getAttribute("USER_ID").toString();
-        user.setUser_id(userId);
-        user.setUser_pwd(oldPassword);
-        if (userService.findUser(user) != null) {
-            userService.updatePassword(userId, newPassword);
-            httpSession.invalidate();
-            return "redirect:/user/login";
+        String oldPassword = password.getOldPassword();
+        String newPassword = password.getNewPassword();
+        String repetition = password.getRepetition();
+        if (oldPassword != null && newPassword != null && repetition != null) {
+            if (oldPassword.equals(newPassword)) {
+                model.addAttribute("msg", "新密码与旧密码不能一致");
+                return "before/userPasswordInfo";
+            } else if (!newPassword.equals(repetition)) {
+                model.addAttribute("msg", "两次输入的新密码不一致");
+                return "admin/adminPasswordInfo";
+            }
+            User user = new User();
+            String userId = httpSession.getAttribute("USER_ID").toString();
+            user.setUser_id(userId);
+            user.setUser_pwd(oldPassword);
+            if (userService.findUser(user) != null) {
+                userService.updatePassword(userId, newPassword);
+                httpSession.invalidate();
+            } else {
+                model.addAttribute("msg", "原密码错误");
+                return "before/userPasswordInfo";
+            }
         } else {
-            model.addAttribute("errorMsg", "原密码错误");
-            return "before/updateUserPassword";
+            model.addAttribute("msg", "请输入正确的信息");
+            return "before/userPasswordInfo";
         }
+        model.addAttribute("msg", "修改成功");
+        return "before/userPasswordInfo";
     }
 }

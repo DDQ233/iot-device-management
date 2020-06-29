@@ -2,6 +2,7 @@ package app.controller.admin;
 
 import app.entity.Admin;
 import app.entity.Device;
+import app.entity.UserDevice;
 import app.service.admin.AdminService;
 import app.service.admin.DeviceService;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,6 @@ import java.util.List;
 public class DeviceController {
     @Resource(name = "deviceService")
     private DeviceService deviceService;
-
     @Resource(name = "adminService")
     private AdminService adminService;
 
@@ -40,40 +40,51 @@ public class DeviceController {
     //     }
     // }
 
-    @RequestMapping("/list")
-    public String toDeviceAdminPage(HttpSession httpSession) {
-        System.out.println("> To device administration page.");
+    @RequestMapping("/deviceList")
+    public String toUserDeviceListPage(@ModelAttribute("device") Device device, Model model, HttpSession httpSession) {
+        System.out.println("> To admin device list page.");
+        String adminId = httpSession.getAttribute("ADMIN_ID").toString();
         List<Device> deviceList = deviceService.findAllDevice();
-        httpSession.setAttribute("DEVICE_LIST", deviceList);
-        return "deviceAdminList";
+        model.addAttribute("device", device);
+        model.addAttribute("deviceList", deviceList);
+        return "admin/deviceList";
     }
 
     @RequestMapping("/addDevice")
-    public String toAddDevicePage() {
-        System.out.println("> To add device page.");
-        return "addDevice";
+    public String toAddDevicePage(@ModelAttribute("device") Device device, Model model) {
+        List<Device> deviceList = deviceService.findAllDevice();
+        model.addAttribute("device", device);
+        model.addAttribute("deviceList", deviceList);
+        return "admin/addDevice";
     }
 
     @RequestMapping("/add")
-    public String addDevice(@ModelAttribute("device") Device device) {
+    public String addDevice(@ModelAttribute("device") Device device, Model model) {
         System.out.println("> Add device.");
-        deviceService.addDevice(device);
-        return "redirect:/device/addDevice";
+        device.setDevice_usage("YES");
+        if (deviceService.findDeviceById(device.getDevice_id()) == null) {
+            if(deviceService.addDevice(device)>0) {
+                model.addAttribute("msg", "添加成功");
+            }
+        } else {
+            model.addAttribute("msg", "添加失败，已经有相同的设备");
+        }
+        return "admin/addDevice";
     }
 
-    @RequestMapping("/delete/{deviceId}")
-    public String deleteDeviceById(@PathVariable String deviceId) {
+    @RequestMapping("/delete")
+    public String deleteDeviceById(String deviceId) {
         System.out.println("> Delete device.");
         deviceService.deleteDeviceById(deviceId);
-        return "forward:/device/list";
+        return "forward:/device/deviceList";
     }
 
-    @RequestMapping("/deviceInfo/{deviceId}")
-    public String toUpdateDevicePage(@PathVariable String deviceId, Model model) {
+    @RequestMapping("/deviceInfo")
+    public String toUpdateDevicePage(String deviceId, Model model) {
         System.out.println("> To device information page.");
         Device device = deviceService.findDeviceById(deviceId);
         model.addAttribute(device);
-        return "deviceInfo";
+        return "admin/deviceInfo";
     }
 
     @RequestMapping("/update")
@@ -81,14 +92,14 @@ public class DeviceController {
         System.out.println("> Update device.");
         deviceService.updateDevice(device);
         httpSession.removeAttribute("DEVICE_LIST");
-        return "forward:/device/list";
+        return "forward:/device/deviceList";
     }
 
     @RequestMapping("/searchDevice")
     public String toSearchDevicePage(HttpSession httpSession) {
         System.out.println("> To search device page.");
         httpSession.removeAttribute("SEARCH_DEVICE_LIST");
-        return "searchDevice";
+        return "admin/searchDevice";
     }
 
     @RequestMapping("/search")
@@ -110,6 +121,6 @@ public class DeviceController {
         List<Device> deviceList = deviceService.findDevice(device);
         httpSession.removeAttribute("SEARCH_DEVICE_LIST");
         httpSession.setAttribute("SEARCH_DEVICE_LIST", deviceList);
-        return "searchDevice";
+        return "admin/searchDevice";
     }
 }

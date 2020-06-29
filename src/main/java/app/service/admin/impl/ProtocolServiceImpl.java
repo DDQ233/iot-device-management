@@ -47,4 +47,9 @@ public class ProtocolServiceImpl implements ProtocolService {
     public Protocol findProtocolById(String id) {
         return protocolDao.findProtocolById(id);
     }
+
+    @Override
+    public int count() {
+        return protocolDao.count();
+    }
 }

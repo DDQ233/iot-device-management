@@ -14,6 +14,9 @@ public interface UserDeviceService {
     // 用户添加设备
     int addUserDevice(UserDevice userDevice);
 
+    // 删除所有用户设备
+    int deleteAllUserDevice(String id);
+
     // 用户删除设备
     int deleteUserDeviceByAuth(String auth);
 

@@ -48,4 +48,11 @@ public class DeviceServiceImpl implements DeviceService {
     public Device findDeviceById(String id) {
         return deviceDao.findDeviceById(id);
     }
+
+    @Override
+    public int count() {
+        return deviceDao.count();
+    }
+
+
 }
