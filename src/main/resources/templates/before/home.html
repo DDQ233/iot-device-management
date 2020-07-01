@@ -68,7 +68,7 @@
             </div>
         </div>
     </div>
-    <div class="layui-col-sm6 layui-col-md3">
+    <div class="layui-col-sm8 layui-col-md12">
         <div class="layui-col-sm12 layui-col-md6">
             <div class="layui-card">
                 <div class="layui-card-header">图表展示</div>
@@ -199,71 +199,93 @@
     <!--                -->
 </div>
 <script type="text/javascript">
-    var base = +new Date(2014, 9, 3);
-    var oneDay = 24 * 3600 * 1000;
-    var date = [];
-
-    var data = [Math.random() * 150];
-    var now = new Date(base);
-
-    function addData(shift) {
-        now = [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/');
-        date.push(now);
-        data.push((Math.random() - 0.4) * 10 + data[data.length - 1]);
-
-        if (shift) {
-            date.shift();
-            data.shift();
-        }
-
-        now = new Date(+new Date(now) + oneDay);
-    }
-
-    for (var i = 1; i < 100; i++) {
-        addData();
-    }
-
-    option = {
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: date
-        },
-        yAxis: {
-            boundaryGap: [0, '50%'],
-            type: 'value'
+    // var dataList = [];
+    // var timeList = ["00:00", "06:00", "12:00", "18:00", "24:00"];
+    optionData = {
+        tooltip: {
+            formatter: "{a} <br/>{b} : {c}"
         },
         series: [
             {
-                name: '成交',
-                type: 'line',
-                smooth: true,
-                symbol: 'none',
-                stack: 'a',
-                areaStyle: {
-                    normal: {}
-                },
-                data: data
+                name: 'Temperature',
+                type: 'gauge',
+                detail: {formatter: '{value}'},
+                data: [{value: 100, name: 'T'}]
             }
         ]
     };
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption(optionData)
 
     setInterval(function () {
-        addData(true);
-        myChart.setOption({
-            xAxis: {
-                data: date
-            },
-            series: [{
-                name: '成交',
-                data: data
-            }]
+        $.ajax({
+            type: "GET",
+            url: "../api/data/new",
+            dataType: "text",
+            timeout: 60000,
+            async: false,
+            success: function (data) {
+                console.log(data);
+                var obj = JSON.parse(data);
+                console.log(obj);
+                // refreshData(true, obj);
+                optionData.series[0].data[0].value = obj.T;
+                myChart.setOption(optionData, true);
+                // myChart.setOption({
+                //     xAxis: {
+                //         data: timeList
+                //     },
+                //     series: [{
+                //         name: 'Temperature',
+                //         data: data
+                //     }]
+                // });
+                // console.log(data);
+                // var obj = JSON.parse(data);
+                // var temp = JSON.stringify()
+                // pushData(true, data);
+                // console.log(obj);
+                // console.log(obj.T);
+                // console.log(data.data);
+            }
         });
-    }, 500);
+    }, 2000);
+    //
+    // function refreshData(shift, data) {
+    //     dataList.push(parseInt(data.T));
+    //     if (shift) {
+    //         console.log(data.T)
+    //         dataList.shift();
+    //     }
+    // }
 
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    myChart.setOption(option)
+    // optionData = {
+    //     xAxis: {
+    //         type: 'category',
+    //         boundaryGap: false,
+    //         data: timeList
+    //     },
+    //     yAxis: {
+    //         boundaryGap: [0, '50%'],
+    //         type: 'value'
+    //     },
+    //     series: [
+    //         {
+    //             name: 'Temperature',
+    //             type: 'line',
+    //             smooth: true,
+    //             symbol: 'none',
+    //             stack: 'a',
+    //             areaStyle: {
+    //                 normal: {}
+    //             },
+    //             data: dataList
+    //         }
+    //     ]
+    // };
+    //
+    // var myChart = echarts.init(document.getElementById('main'));
+    // myChart.setOption(optionData)
 </script>
 
 </body>

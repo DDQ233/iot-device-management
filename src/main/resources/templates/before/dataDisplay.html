@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>欢迎页面-X-admin2.2</title>
@@ -13,6 +13,7 @@
     <script type="text/javascript" th:src="@{/lib/layui/layui.js}" charset="utf-8"></script>
     <script type="text/javascript" th:src="@{/js/xadmin.js}"></script>
     <script th:src="@{https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js}"></script>
+<!--    <script th:src="@{http://www.json.org/json.js}"></script>-->
     <!--[if lt IE 9]>
     <script type="text/javascript" th:src="@{https://cdn.staticfile.org/html5shiv/r29/html5.min.js}"></script>
     <script type="text/javascript" th:src="@{https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js}"></script>
@@ -25,7 +26,7 @@
             <li>
                 <div class="layui-col-sm12 layui-col-md6">
                     <div class="layui-card">
-                        <div class="layui-card-header">最新一周新增用户</div>
+                        <div class="layui-card-header">图表</div>
                         <div class="layui-card-body" style="min-height: 280px;">
                             <div th:id="${userDevice.device_auth}" class="layui-col-sm12" style="height: 300px;"></div>
                         </div>
@@ -65,9 +66,67 @@
         </ul>
     </div>
 </div>
-</div>
 
 <script type="text/javascript">
+    /*
+    var dataList = [];
+    var timeList = ["00:00", "06:00", "12:00", "18:00", "24:00"];
+    setInterval(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8088/api/data/new",
+            dataType: "text",
+            timeout: 60000,
+            async: false,
+            success: function (data) {
+                console.log(data);
+                // console.log(data);
+                // var obj = JSON.parse(data);
+                // var temp = JSON.stringify()
+                // pushData(true, data);
+                // console.log(obj);
+                // console.log(obj.T);
+                // console.log(data.data);
+            }
+        });
+    }, 2000);
+
+    function pushData(shift, data) {
+        dataList.push(data.T);
+        if (shift) {
+            dataList.shift();
+        }
+    }
+
+    optionData = {
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: timeList
+        },
+        yAxis: {
+            boundaryGap: [0, '50%'],
+            type: 'value'
+        },
+        series: [
+            {
+                name: 'Temperature',
+                type: 'line',
+                smooth: true,
+                symbol: 'none',
+                stack: 'a',
+                areaStyle: {
+                    normal: {}
+                },
+                data: dataList
+            }
+        ]
+    };
+
+    var myChart = echarts.init(document.getElementById('auth1'));
+    myChart.setOption(optionData)
+*/
+
     var base = +new Date(2014, 9, 3);
     var oneDay = 24 * 3600 * 1000;
     var date = [];
@@ -104,9 +163,9 @@
         },
         series: [
             {
-                name:'成交',
-                type:'line',
-                smooth:true,
+                name: '成交',
+                type: 'line',
+                smooth: true,
                 symbol: 'none',
                 stack: 'a',
                 areaStyle: {
@@ -124,49 +183,50 @@
                 data: date
             },
             series: [{
-                name:'成交',
+                name: '成交',
                 data: data
             }]
         });
-    }, 500);
+    }, 1000);
 
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('auth1'));
     myChart.setOption(option1)
+
 </script>
 
 <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart2 = echarts.init(document.getElementById('auth2'));
-
-    // 指定图表的配置项和数据
-    var option2 = {
-        grid: {
-            top: '5%',
-            right: '1%',
-            left: '1%',
-            bottom: '10%',
-            containLabel: true
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        xAxis: {
-            type: 'category',
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        },
-        yAxis: {
-            type: 'value'
-        },
-        series: [{
-            name: '用户量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-            type: 'line',
-            smooth: true
-        }]
-    };
-    // 使用刚指定的配置项和数据显示图表。
-    myChart2.setOption(option2);
+    // // 基于准备好的dom，初始化echarts实例
+    // var myChart2 = echarts.init(document.getElementById('auth1'));
+    //
+    // // 指定图表的配置项和数据
+    // var option2 = {
+    //     grid: {
+    //         top: '5%',
+    //         right: '1%',
+    //         left: '1%',
+    //         bottom: '10%',
+    //         containLabel: true
+    //     },
+    //     tooltip: {
+    //         trigger: 'axis'
+    //     },
+    //     xAxis: {
+    //         type: 'category',
+    //         data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+    //     },
+    //     yAxis: {
+    //         type: 'value'
+    //     },
+    //     series: [{
+    //         name: '用户量',
+    //         data: [820, 932, 901, 934, 1290, 1330, 1320],
+    //         type: 'line',
+    //         smooth: true
+    //     }]
+    // };
+    // // 使用刚指定的配置项和数据显示图表。
+    // myChart2.setOption(option2);
 
     //
     // // 基于准备好的dom，初始化echarts实例

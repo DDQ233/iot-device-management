@@ -49,6 +49,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 "/user/login",
                 "/user/toLogin",
                 "/user/login.html"
+                // "/api/data/**",
+                // "/api/data/**/**"
         };
 
         registry.addInterceptor(adminVisitInterceptor)

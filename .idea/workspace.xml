@@ -2,46 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec64b890-0a42-4283-9f2d-cc3b0f660f25" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/entity/Password.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProtocolMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/addDevice.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/adminInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/adminMain.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/adminPasswordInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/deviceAdmin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/deviceInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/deviceList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/dataDisplay.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userPasswordInfo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userSearchList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/ApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iot-device-management.iml" beforeDir="false" afterPath="$PROJECT_DIR$/iot-device-management.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/DeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/DeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/DataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/before/UserDeviceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/DeviceDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/admin/ProtocolDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/admin/ProtocolDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/before/UserDeviceDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/entity/UserDevice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/DeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/DeviceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/ProtocolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/ProtocolService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/DeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/DeviceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/ProtocolServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/admin/impl/ProtocolServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/UserDeviceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/UserDeviceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DeviceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserDeviceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/dao/before/DataDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/dao/before/DataDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/before/impl/DataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/before/impl/DataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DataMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DataMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/dataDisplay.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/dataDisplay.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/order-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceAdmin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceInfo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userDeviceList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/before/userInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/before/userInfo.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,6 +191,9 @@
       <workItem from="1593241028629" duration="74991000" />
       <workItem from="1593344743867" duration="15233000" />
       <workItem from="1593362288260" duration="1248000" />
+      <workItem from="1593442708807" duration="1679000" />
+      <workItem from="1593464827330" duration="23841000" />
+      <workItem from="1593569490235" duration="1271000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <created>1592268684912</created>

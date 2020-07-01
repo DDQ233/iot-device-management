@@ -7,4 +7,9 @@
     <select id="count" parameterType="String" resultType="Integer">
         select count(1) from tb_data where user_id = #{id}
     </select>
+
+    <!--/查询最新数据-->
+    <select id="findNewData" parameterType="String" resultType="data">
+        SELECT* FROM tb_data WHERE user_id=#{userId} and device_id=#{deviceId} ORDER BY `timestamp` DESC LIMIT 1;
+    </select>
 </mapper>

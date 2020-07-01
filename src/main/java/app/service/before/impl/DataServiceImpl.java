@@ -59,4 +59,11 @@ public class DataServiceImpl implements DataService {
     public int count(String id) {
         return dataDao.count(id);
     }
+
+    @Override
+    public Data findNewData(String userId, String deviceId) {
+        return dataDao.findNewData(userId, deviceId);
+    }
+
+
 }

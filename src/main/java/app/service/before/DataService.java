@@ -36,4 +36,7 @@ public interface DataService {
 
     // 查询数据总量
     int count(String id);
+
+    // 查询最新数据
+    Data findNewData(String userId, String deviceId);
 }
